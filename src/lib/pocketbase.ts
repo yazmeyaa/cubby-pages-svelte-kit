@@ -2,7 +2,8 @@ import { PUBLIC_BACKEND_URL } from '$env/static/public'
 import PocketBase, { Admin, LocalAuthStore, BaseAuthStore, Record } from 'pocketbase'
 import { writable } from 'svelte/store'
 import { setAdmin } from "$lib/stores/admin";
-import { goto } from '$app/navigation';
+// import { goto } from '$app/navigation';
+// import {browser} from '$app/environment'
 import { addErrorToast } from './stores/toasts';
 import CommonHelper from './utils/CommonHelper';
 import { setErrors } from './stores/errors';
@@ -42,7 +43,7 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
         this.authStore.clear();
 
         if (redirect) {
-            goto('/login');
+            console.log(123)
         }
     }
 
@@ -80,7 +81,6 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
         // forbidden
         if (statusCode === 403) {
             this.cancelAllRequests();
-            return goto('/');
         }
     }
 }

@@ -38,11 +38,13 @@
   "type": "module",
   "dependencies": {
     "@types/luxon": "^3.3.0",
+    "carbon-components": "^10.58.3",
     "carbon-components-svelte": "^0.75.0",
     "carbon-icons-svelte": "^11.4.0",
     "luxon": "^3.3.0",
     "pocketbase": "^0.9.1",
     "sass": "^1.62.1",
-    "svelte-i18n": "^3.6.0"
+    "svelte-i18n": "^3.6.0",
+    "sveltekit-i18n": "^2.2.2"
   }
 }

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         Header,
         HeaderNav,
@@ -24,16 +24,18 @@
     import { admin } from "$lib/stores/admin";
 
     import ApiClient from "$lib/utils/ApiClient";
+    import type { CarbonTheme } from "carbon-components-svelte/types/Theme/Theme.svelte"
 
-    export let isInFrame;
-    export let isSideNavOpen;
-    export let currentTheme;
-    const dispatch = createEventDispatcher();
+    export let isInFrame: boolean;
+    export let isSideNavOpen: boolean;
+    export let currentTheme: CarbonTheme;
+    const dispatch = createEventDispatcher<{changeTheme: {theme: CarbonTheme}}>();
 
     /**
      * @param {"white" | "g10" | "g80" | "g90" | "g100"} theme - white, g10, g80, g90, g100
      */
-    function handleChangeTheme(theme) {
+    function handleChangeTheme(theme: CarbonTheme) {
+        console.log(theme)
         dispatch("changeTheme", { theme });
     }
 
@@ -54,22 +56,6 @@
         <div><strong>CUBBY II &nbsp;</strong><small>data platform</small></div>
     </div>
 
-    <!-- <HeaderNav>
-        <HeaderNavMenu text={$_("header.language")}>
-            <HeaderNavItem
-                text="Русский"
-                on:click={() => {
-                    $locale = "ru";
-                }}
-            />
-            <HeaderNavItem
-                text="English"
-                on:click={(handleChangeTheme) => {
-                    $locale = "en";
-                }}
-            />
-        </HeaderNavMenu>
-    </HeaderNav> -->
     {#if !isInFrame}
         <HeaderUtilities>
             <HeaderAction bind:isOpen={languagePanelOpen} style="display: flex;justify-content:center;align-items:center;">
@@ -111,21 +97,6 @@
                 icon={Notification}
             />
 
-            <!-- <HeaderGlobalAction
-                style="display: flex;justify-content:center;align-items:center;"
-                aria-label="Выйти"
-                icon={Logout}
-                on:click={() => {
-                    localStorage.removeItem("cubberAuth");
-                    ApiClient.logout();
-                    // setTimeout(() => {
-                    //     document.location.reload();
-                    // }, 1000);
-                    // goto('/', {
-                    //     replaceState: true
-                    // })
-                }}
-            /> -->
             <HeaderAction
                 style="display: flex;justify-content:center;align-items:center;"
                 bind:isOpen={accountPanelOpen}

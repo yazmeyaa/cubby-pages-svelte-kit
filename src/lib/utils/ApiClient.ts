@@ -3,6 +3,7 @@ import { PUBLIC_BACKEND_URL } from '$env/static/public'
 // ---
 import CommonHelper from "$lib/utils/CommonHelper";
 import { goto } from '$app/navigation'
+import { browser } from '$app/environment'
 import { addErrorToast } from "$lib/stores/toasts";
 import { setErrors } from "$lib/stores/errors";
 import { setAdmin } from "$lib/stores/admin";
@@ -45,7 +46,7 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
         this.authStore.clear();
 
         if (redirect) {
-            goto('/login');
+            // (browser && goto('/login'));
         }
     }
 
@@ -83,7 +84,7 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
         // forbidden
         if (statusCode === 403) {
             this.cancelAllRequests();
-            return goto('/');
+            // return goto('/');
         }
     }
 }

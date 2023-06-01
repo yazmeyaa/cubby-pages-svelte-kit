@@ -58,7 +58,7 @@
           href="/request-password-reset"
           on:click={(event) => {
             event.preventDefault()
-            goto('/recovery')
+            // goto('/recovery')
           }}
         >
           "Forgot password"
