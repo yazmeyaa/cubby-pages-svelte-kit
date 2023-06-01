@@ -8,12 +8,12 @@ export const actions: Actions = {
       password: string
     }
 
+    console.log(data)
+
     try {
-      await locals.pb
-        .collection('users')
-        .authWithPassword(data.email, data.password)
+      await locals.pb.admins.authWithPassword(data.email, data.password)
     } catch (e) {
-      console.error(e)
+      console.log('a')
       throw e
     }
 

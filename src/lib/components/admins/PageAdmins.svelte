@@ -1,0 +1,279 @@
+<script>
+    import { replace, querystring } from "svelte-spa-router";
+    import ApiClient from "$lib/utils/ApiClient";
+    import CommonHelper from "$lib/utils/CommonHelper";
+    import { pageTitle } from "$lib/stores/app";
+    import { admin as loggedAdmin } from "$lib/stores/admin";
+    import PageWrapper from "$lib/components/base/PageWrapper.svelte";
+    import Searchbar from "$lib/components/base/Searchbar.svelte";
+    import RefreshButton from "$lib/components/base/RefreshButton.svelte";
+    import SortHeader from "$lib/components/base/SortHeader.svelte";
+    import FormattedDate from "$lib/components/base/FormattedDate.svelte";
+    import HorizontalScroller from "$lib/components/base/HorizontalScroller.svelte";
+    import CopyIcon from "$lib/components/base/CopyIcon.svelte";
+    import SettingsSidebar from "$lib/components/settings/SettingsSidebar.svelte";
+    import AdminUpsertPanel from "$lib/components/admins/AdminUpsertPanel.svelte";
+
+    import {
+        DataTable,
+        Toolbar,
+        ToolbarContent,
+        ToolbarSearch,
+        Button,
+        Breadcrumb,
+        BreadcrumbItem,
+    } from "carbon-components-svelte";
+    import Add from "carbon-icons-svelte/lib/Add.svelte";
+    import Reset from "carbon-icons-svelte/lib/Reset.svelte";
+
+    import { _ } from "svelte-i18n";
+
+    $pageTitle = "Admins";
+
+    const queryParams = new URLSearchParams($querystring);
+
+    let adminUpsertPanel;
+    let admins = [];
+    let isLoading = false;
+    let filter = queryParams.get("filter") || "";
+    let sort = queryParams.get("sort") || "-created";
+
+    $: if (sort !== -1 && filter !== -1) {
+        // keep listing params in sync
+        const query = new URLSearchParams({ filter, sort }).toString();
+        replace("/settings/admins?" + query);
+
+        loadAdmins();
+    }
+
+    export function loadAdmins() {
+        isLoading = true;
+
+        admins = []; // reset
+
+        return ApiClient.admins
+            .getFullList(100, {
+                sort: sort || "-created",
+                filter: filter,
+            })
+            .then((result) => {
+                admins = result;
+                isLoading = false;
+            })
+            .catch((err) => {
+                if (!err?.isAbort) {
+                    isLoading = false;
+                    console.warn(err);
+                    clearList();
+                    ApiClient.errorResponseHandler(err, false);
+                }
+            });
+    }
+
+    function clearList() {
+        admins = [];
+    }
+
+    $: headers = [
+        {
+            key: "avatar",
+            value: "Avatar",
+        },
+        {
+            key: "id",
+            value: "id",
+        },
+        {
+            key: "email",
+            value: "email",
+        },
+        {
+            key: "created",
+            value: "created",
+        },
+        {
+            key: "updated",
+            value: "updated",
+        },
+    ];
+</script>
+
+<SettingsSidebar />
+
+<PageWrapper>
+    <header class="page-header" >
+        <Breadcrumb>
+            <BreadcrumbItem>{$_("pageSettings.header.breadcrumbs.page")}</BreadcrumbItem>
+            <BreadcrumbItem>{$_("pageSettings.admins.header.breadcrumbs.title")}</BreadcrumbItem>
+        </Breadcrumb>
+    </header>
+
+    <!-- <Searchbar
+        value={filter}
+        placeholder={"Search filter, eg. email='test@example.com'"}
+        extraAutocompleteKeys={["email"]}
+        on:submit={(e) => (filter = e.detail)}
+    />
+    <div class="clearfix" /> -->
+
+    <HorizontalScroller class="table-wrapper">
+        <DataTable
+            sortable
+            {headers}
+            rows={admins}
+            id="bx-admins-table"
+            on:click:row={(event) => adminUpsertPanel?.show(event.detail)}
+        >
+            <svelte:fragment slot="cell" let:cell let:cellIndex let:rowIndex let:row>
+                {#if headers[cellIndex].key === "avatar"}
+                    <figure class="thumb thumb-sm thumb-circle">
+                        <img
+                            src="{import.meta.env.BASE_URL}images/avatars/avatar{row.avatar || 0}.svg"
+                            alt="Admin avatar"
+                        />
+                    </figure>
+                {:else}
+                    <span>{row[headers[cellIndex].key]}</span>
+                {/if}
+            </svelte:fragment>
+
+            <Toolbar>
+                <ToolbarContent>
+                    <ToolbarSearch shouldFilterRows bindfilteredRowIds: />
+                    <Button
+                        size="field"
+                        kind="ghost"
+                        iconDescription={$_("refreshButton")}
+                        icon={Reset}
+                        on:click={() => loadAdmins()}
+                    />
+                    <Button
+                        size="field"
+                        icon={Add}
+                        iconDescription="New admin"
+                        on:click={() => adminUpsertPanel?.show()}>{$_("pageSettings.admins.newAdmin")}</Button
+                    >
+                </ToolbarContent>
+            </Toolbar>
+        </DataTable>
+        <!-- <table class="table" class:table-loading={isLoading}>
+            <thead>
+                <tr>
+                    <th class="min-width" />
+
+                    <SortHeader class="col-type-text" name="id" bind:sort>
+                        <div class="col-header-content">
+                            <i class={CommonHelper.getFieldTypeIcon("primary")} />
+                            <span class="txt">id</span>
+                        </div>
+                    </SortHeader>
+
+                    <SortHeader class="col-type-email col-field-email" name="email" bind:sort>
+                        <div class="col-header-content">
+                            <i class={CommonHelper.getFieldTypeIcon("email")} />
+                            <span class="txt">email</span>
+                        </div>
+                    </SortHeader>
+
+                    <SortHeader class="col-type-date col-field-created" name="created" bind:sort>
+                        <div class="col-header-content">
+                            <i class={CommonHelper.getFieldTypeIcon("date")} />
+                            <span class="txt">created</span>
+                        </div>
+                    </SortHeader>
+
+                    <SortHeader class="col-type-date col-field-updated" name="updated" bind:sort>
+                        <div class="col-header-content">
+                            <i class={CommonHelper.getFieldTypeIcon("date")} />
+                            <span class="txt">updated</span>
+                        </div>
+                    </SortHeader>
+
+                    <th class="col-type-action min-width" />
+                </tr>
+            </thead>
+            <tbody>
+                {#each admins as admin (admin.id)}
+                    <tr
+                        tabindex="0"
+                        class="row-handle"
+                        on:click={() => adminUpsertPanel?.show(admin)}
+                        on:keydown={(e) => {
+                            if (e.code === "Enter" || e.code === "Space") {
+                                e.preventDefault();
+                                adminUpsertPanel?.show(admin);
+                            }
+                        }}
+                    >
+                        <td class="min-width">
+                            <figure class="thumb thumb-sm thumb-circle">
+                                <img
+                                    src="{import.meta.env.BASE_URL}images/avatars/avatar{admin.avatar ||
+                                        0}.svg"
+                                    alt="Admin avatar"
+                                />
+                            </figure>
+                        </td>
+
+                        <td class="col-type-text col-field-id">
+                            <div class="label">
+                                <CopyIcon value={admin.id} />
+                                <span class="txt">{admin.id}</span>
+                            </div>
+                            {#if admin.id === $loggedAdmin.id}
+                                <span class="label label-warning m-l-5">You</span>
+                            {/if}
+                        </td>
+
+                        <td class="col-type-email col-field-email">
+                            <span class="txt txt-ellipsis" title={admin.email}>
+                                {admin.email}
+                            </span>
+                        </td>
+
+                        <td class="col-type-date col-field-created">
+                            <FormattedDate date={admin.created} />
+                        </td>
+
+                        <td class="col-type-date col-field-updated">
+                            <FormattedDate date={admin.updated} />
+                        </td>
+
+                        <td class="col-type-action min-width">
+                            <i class="ri-arrow-right-line" />
+                        </td>
+                    </tr>
+                {:else}
+                    {#if isLoading}
+                        <tr>
+                            <td colspan="99" class="p-xs">
+                                <span class="skeleton-loader m-0" />
+                            </td>
+                        </tr>
+                    {:else}
+                        <tr>
+                            <td colspan="99" class="txt-center txt-hint p-xs">
+                                <h6>No admins found.</h6>
+                                {#if filter?.length}
+                                    <button
+                                        type="button"
+                                        class="pb-btn btn-hint btn-expanded m-t-sm"
+                                        on:click={() => (filter = "")}
+                                    >
+                                        <span class="txt">Clear filters</span>
+                                    </button>
+                                {/if}
+                            </td>
+                        </tr>
+                    {/if}
+                {/each}
+            </tbody>
+        </table> -->
+    </HorizontalScroller>
+
+    <!-- {#if admins.length}
+        <small class="block txt-hint txt-right m-t-sm">Showing {admins.length} of {admins.length}</small>
+    {/if} -->
+</PageWrapper>
+
+<AdminUpsertPanel bind:this={adminUpsertPanel} on:save={() => loadAdmins()} on:delete={() => loadAdmins()} />

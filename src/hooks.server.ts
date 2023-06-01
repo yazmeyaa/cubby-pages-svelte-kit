@@ -1,4 +1,4 @@
-import { pb } from '$lib/pocketbase'
+import {pb} from '$lib/pocketbase'
 import type { Handle } from '@sveltejs/kit'
 
 export const handle: Handle = async ({ event, resolve }) => {
