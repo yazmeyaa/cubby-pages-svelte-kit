@@ -1,12 +1,4 @@
 {
-    "i18n-ally.localesPaths": [
-        "src/lib/locales",
-        "static/codebase/types/ts-colorpicker/sources/locales",
-        "static/codebase/types/ts-combobox/sources/locales",
-        "static/codebase/types/ts-form/sources/locales",
-        "static/codebase/types/ts-message/sources/locales",
-        "static/codebase/types/ts-spreadsheet/sources/locales",
-        "static/codebase/types/ts-timepicker/sources/locales",
-        "static/codebase/types/ts-vault/sources/locales"
-    ]
+  "eslint.probe": ["javascript", "typescript", "svelte"],
+  "cSpell.words": ["trpc"]
 }

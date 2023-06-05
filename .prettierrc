@@ -1,7 +1,7 @@
 {
   "semi": false,
-  "singleQuote": true,
-  "plugins": ["prettier-plugin-svelte"],
+  "proseWrap": "always",
+  "printWidth": 90,
   "pluginSearchDirs": ["."],
   "overrides": [
     {
