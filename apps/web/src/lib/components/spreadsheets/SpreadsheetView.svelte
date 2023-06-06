@@ -42,6 +42,7 @@
   import { CELL_KINDS } from '$lib/types/spreadsheet'
   import FormulaParser from 'fast-formula-parser'
   import type { Record } from 'pocketbase'
+  import { addSuccessToast, toasts } from '$lib/stores/toasts'
 
   let data: any
   export let spreadsheetRecord: Record
@@ -71,6 +72,9 @@
         $autoCancel: false,
       }
     )
+    .then(() => {
+      addSuccessToast("Successfull saved table!", 3000)
+    })
   }
 
   onMount(() => {
@@ -82,6 +86,11 @@
   {#if !spreadsheetRecord}
     <span>Select table left side panel!</span>
   {:else}
+  <Row noGutter>
+    <Column  xlg={{offset: 14, span: 2}} lg={{offset: 14, span: 2}} md={{offset: 6, span: 2}}>
+      <Button size="field" on:click={handleSaveSpreadsheet}>Save spreadsheet</Button>
+    </Column>
+  </Row>
     <Row>
       <Column noGutter style="position: relative;">
         <div
@@ -97,11 +106,7 @@
         </div>
       </Column>
     </Row>
-    <Row noGutter>
-      <Column>
-        <Button on:click={handleSaveSpreadsheet}>Save spreadsheet</Button>
-      </Column>
-    </Row>
+
     <!--* Spreadsheet-->
     <Row noGutter>
       <Column
