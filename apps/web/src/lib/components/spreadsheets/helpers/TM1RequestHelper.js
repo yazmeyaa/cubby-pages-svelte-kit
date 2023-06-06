@@ -47,7 +47,7 @@ export function requestTM1CubeData({ requiredDemensions, args, cubeName }) {
 
     const MDX = startMDX + endMDX;
 
-    return fetch(`https://84.201.147.227:8009/api/v1/ExecuteMDX?$expand=Cells`, {
+    return fetch(`https://84.201.147.227:8443/api/v1/ExecuteMDX?$expand=Cells`, {
         method: "POST",
         headers,
         body: JSON.stringify({ MDX }),

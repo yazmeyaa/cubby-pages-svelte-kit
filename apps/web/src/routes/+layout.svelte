@@ -1,11 +1,11 @@
 <script lang="ts">
   import '$lib/scss/main.scss'
-  import "carbon-components-svelte/css/all.css";
-  import "$lib/i18n"
+  import 'carbon-components-svelte/css/all.css'
+  import '$lib/i18n'
   import { pageTitle, appName, hideControls } from '$lib/stores/app'
-  import {browser} from '$app/environment'
+  import { browser } from '$app/environment'
   import CommonHelper from '$lib/utils/CommonHelper'
-  import {pb} from '$lib/pocketbase'
+  import { pb } from '$lib/pocketbase'
   import {
     SideNav,
     SideNavItems,
@@ -16,9 +16,12 @@
   import Header from '$lib/components/layout/Header.svelte'
   import NavLink from '$lib/components/layout/NavLink.svelte'
   import Toasts from '$lib/components/base/Toasts.svelte'
-  import {onMount} from 'svelte'
+  import { onMount } from 'svelte'
+  import {user} from '$lib/stores/user'
 
+  import type { PageData } from './$types'
 
+  export let data: PageData
 
   let theme: CarbonTheme = 'white'
   let showAppSidebar = true
@@ -34,17 +37,17 @@
     theme = event.detail.theme
   }
 
-  $: showAppSidebar = true
+  $: console.log($user)
+
+  $: showAppSidebar = pb.authStore.isValid
 
   onMount(() => {
-    console.log(pb.authStore.isValid)
-    if(!pb.authStore.isValid) {
-    }
+    if(!data.auth) goto('/login')
   })
 
   import '$lib/scss/main.scss'
   import type { CarbonTheme } from 'carbon-components-svelte/types/Theme/Theme.svelte'
-    import { goto } from '$app/navigation'
+  import { goto } from '$app/navigation'
 </script>
 
 <svelte:head>
@@ -58,17 +61,15 @@
 {#if showAppSidebar}
   <SideNav bind:isOpen={isSideNavOpen} rail expansionBreakpoint={4096}>
     <SideNavItems>
-      <Links let:links={links}>
-
+      <Links let:links>
         {#each links as link}
-        <NavLink
-          on:linkClicked={handleLinkClick}
-          icon={link.icon}
-          linkTo={link.linkTo}
-          text={link.text}
-        />
-      {/each}
-      
+          <NavLink
+            on:linkClicked={handleLinkClick}
+            icon={link.icon}
+            linkTo={link.linkTo}
+            text={link.text}
+          />
+        {/each}
       </Links>
     </SideNavItems>
   </SideNav>
@@ -99,13 +100,13 @@
   @import 'carbon-components-svelte/css/all.css';
 
   .container {
-        display: flex;
-        height: 100%;
-        overflow: hidden;
-        max-height: 100%;
-        overflow: hidden;
-        /* max-height: 90vh; */
-        /* display: grid;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    overflow: hidden;
+    /* max-height: 90vh; */
+    /* display: grid;
         width: 100vw;
         height: 100vh;
 
@@ -113,17 +114,17 @@
             "header header"
             "left main";
         /* grid-template-columns: 300px 4fr; */
-        /* grid-template-rows: 48px 1fr; */
-    }
+    /* grid-template-rows: 48px 1fr; */
+  }
 
-    #left_app_sidebar {
-        /* height: 90vh; */
-        /* width: calc(300px); */
-        overflow: hidden;
-        /* height: 100%; */
-    }
+  #left_app_sidebar {
+    /* height: 90vh; */
+    /* width: calc(300px); */
+    overflow: hidden;
+    /* height: 100%; */
+  }
 
-    /* #main_content {
+  /* #main_content {
         /* padding-left: 0px !important;
         margin-bottom: 0;
         overflow: hidden; 

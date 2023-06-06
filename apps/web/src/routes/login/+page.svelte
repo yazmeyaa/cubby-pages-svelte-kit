@@ -11,12 +11,20 @@
 
   import { _ } from 'svelte-i18n'
   import { goto } from '$app/navigation'
-    import { pb } from '$lib/pocketbase'
+  import { pb } from '$lib/pocketbase'
+  import { onMount } from 'svelte'
+  import type { PageData } from './$types'
+
+  export let data: PageData
 
   let email = '';
   let password = '';
   let isLoading = false;
   let formRef: HTMLFormElement
+
+  onMount(() => {
+    if(data.auth) goto('/spreadsheets')
+  })
 
   async function handleSubmit() {
     // const formData = new FormData(formRef)

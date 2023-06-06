@@ -8,6 +8,7 @@ import { addErrorToast } from "$lib/stores/toasts";
 import { setErrors } from "$lib/stores/errors";
 import { setAdmin } from "$lib/stores/admin";
 import type { BaseAuthStore, ClientResponseError, Record } from 'pocketbase'
+import { setUser } from "$lib/stores/user";
 
 
 interface AppPocketBaseInterface extends PocketBase {
@@ -45,8 +46,9 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
     logout(redirect = true) {
         this.authStore.clear();
 
-        if (redirect) {
-            // (browser && goto('/login'));
+        if (redirect && browser) {
+            setUser(null)
+            goto('/login')
         }
     }
 

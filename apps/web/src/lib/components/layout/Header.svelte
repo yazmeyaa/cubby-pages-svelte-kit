@@ -26,6 +26,8 @@
     import ApiClient from "$lib/utils/ApiClient";
     import type { CarbonTheme } from "carbon-components-svelte/types/Theme/Theme.svelte"
 
+    import {goto} from '$app/navigation'
+
     export let isInFrame: boolean;
     export let isSideNavOpen: boolean;
     export let currentTheme: CarbonTheme;
