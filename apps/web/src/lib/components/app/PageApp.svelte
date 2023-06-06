@@ -3,7 +3,7 @@
 import { admin as loggedAdmin } from "$lib/stores/admin";
 </script>
 
-{#if $loggedAdmin.id === 'ryf4opekrm5e9u8'}
+{#if $loggedAdmin?.id === 'ryf4opekrm5e9u8'}
 <iframe
         src="http://localhost:5174"
         style="width: 100%; height: calc(100%); border: none;"

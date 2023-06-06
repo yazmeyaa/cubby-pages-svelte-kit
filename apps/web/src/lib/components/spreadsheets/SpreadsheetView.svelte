@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pb as ApiClient } from '$lib/pocketbase'
+  import { pb as ApiClient, pb } from '$lib/pocketbase'
   import { createEventDispatcher, onDestroy, onMount } from 'svelte'
   import Parser, { FormulaHelpers, FormulaError } from 'fast-formula-parser'
   import Table from './table/Table.svelte'
@@ -29,7 +29,7 @@
   import Unlocked from 'carbon-icons-svelte/lib/Unlocked.svelte'
   import Download from 'carbon-icons-svelte/lib/Download.svelte'
 
-  import Spreadsheet from "x-data-spreadsheet";
+  import Spreadsheet from 'x-data-spreadsheet'
 
   import { confirm } from '$lib/stores/confirmation'
 
@@ -48,29 +48,34 @@
   let spreadsheet: Spreadsheet
   let saveInterval
 
-
   function createSpreadsheet(record: Record) {
     if (data) {
       data = record.data
     }
 
-    console.log(record)
-
     spreadsheet = new Spreadsheet('#spreadsheet')
     spreadsheet.loadData(record.data)
+  }
 
-    spreadsheet.on('cell-edited', console.log)
+  function handleSaveSpreadsheet() {
+    const data = spreadsheet.getData()
 
+    const formData = new FormData()
+    formData.append('data', JSON.stringify(data))
+    formData.append('name', spreadsheetRecord.name)
+
+    pb.collection(spreadsheetRecord.collectionId).update(
+      spreadsheetRecord.id,
+      formData,
+      {
+        $autoCancel: false,
+      }
+    )
   }
 
   onMount(() => {
     createSpreadsheet(spreadsheetRecord)
   })
-
-  onDestroy(() => {
-    console.log("destroyed")
-  })
-
 </script>
 
 <Grid fullWidth noGutter>
@@ -92,6 +97,11 @@
         </div>
       </Column>
     </Row>
+    <Row noGutter>
+      <Column>
+        <Button on:click={handleSaveSpreadsheet}>Save spreadsheet</Button>
+      </Column>
+    </Row>
     <!--* Spreadsheet-->
     <Row noGutter>
       <Column
@@ -103,7 +113,7 @@
         }}
         style="max-height: calc(100vh - calc(3rem + 80px + 2px + 78px))"
       >
-        <div id="spreadsheet"  />
+        <div id="spreadsheet" />
       </Column>
     </Row>
   {/if}

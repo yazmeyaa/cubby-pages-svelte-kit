@@ -8,7 +8,6 @@ export const actions: Actions = {
       password: string
     }
 
-
     try {
       await locals.pb.admins.authWithPassword(data.email, data.password)
     } catch (e) {
@@ -16,6 +15,6 @@ export const actions: Actions = {
       throw e
     }
 
-    throw redirect(303, '/spreadsheet')
+    throw redirect(303, '/app')
   }
 }

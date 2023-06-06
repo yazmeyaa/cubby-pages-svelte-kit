@@ -23,7 +23,7 @@
     import { locale, _ } from "svelte-i18n";
     import { admin } from "$lib/stores/admin";
 
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import type { CarbonTheme } from "carbon-components-svelte/types/Theme/Theme.svelte"
 
     import {goto} from '$app/navigation'
@@ -125,6 +125,7 @@
                         on:click={() => {
                             localStorage.removeItem("cubberAuth");
                             ApiClient.logout();
+                            goto('/login')
                         }}
                     >
                         Logout

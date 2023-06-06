@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { applyAction, enhance } from '$app/forms'
+  import { applyAction, enhance, type SubmitFunction } from '$app/forms'
   import FullPage from '$lib/components/base/FullPage.svelte'
   import ApiClient from '$lib/utils/ApiClient'
   import Field from '$lib/components/base/Field.svelte'
@@ -14,6 +14,7 @@
   import { pb } from '$lib/pocketbase'
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
+  import { setAuth } from '$lib/stores/admin'
 
   export let data: PageData
 
@@ -23,33 +24,38 @@
   let formRef: HTMLFormElement
 
   onMount(() => {
-    if(data.auth) goto('/spreadsheets')
+    if(pb.authStore.isValid) goto('/spreadsheets')
   })
 
   async function handleSubmit() {
-    // const formData = new FormData(formRef)
-    // formData.append('email', email)
-    // formData.append('password', password)
-    // fetch('/login', {
-    //   method: "POST",
-    //   body: formData
-    // })
-    // .then(res => res.json())
-    // .then(applyAction)
+    isLoading = true
 
-    pb.admins.authWithPassword(email, password)
-    .then(() => {
-      goto('/spreadsheets')
-    })
+    // @ts-ignore
+    return async ({result, update}) => {
+      applyAction(result)
+      pb.authStore.loadFromCookie(document.cookie)
+      applyAction(result)
+    }
+
+    // pb.admins.authWithPassword(email, password)
+    // .then(() => {
+    //   console.log('Success')
+    //   goto('/spreadsheets')
+    // })
+    // .catch(error => {
+    //   console.log(error)
+    // })
   }
 </script>
 
 <FullPage fullSize>
   <form
+    method="post"
     bind:this={formRef}
     class="form_container"
-    on:submit|preventDefault={handleSubmit}
-  >
+    use:enhance={handleSubmit}
+    >
+    <!-- on:submit|preventDefault={handleSubmit} -->
     <div class="content txt-center m-b-base">
       <h1>Login to admin</h1>
     </div>

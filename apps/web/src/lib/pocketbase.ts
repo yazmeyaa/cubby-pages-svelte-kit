@@ -2,8 +2,6 @@ import { PUBLIC_BACKEND_URL } from '$env/static/public'
 import PocketBase, { Admin, LocalAuthStore, BaseAuthStore, Record } from 'pocketbase'
 import { writable } from 'svelte/store'
 import { setAdmin } from "$lib/stores/admin";
-// import { goto } from '$app/navigation';
-// import {browser} from '$app/environment'
 import { addErrorToast } from './stores/toasts';
 import CommonHelper from './utils/CommonHelper';
 import { setErrors } from './stores/errors';
@@ -22,16 +20,16 @@ interface AppPocketBaseInterface extends PocketBase {
      * @param  {Boolean} notify     Whether to add a toast notification.
      * @param  {String}  defaultMsg Default toast notification message if the error doesn't have one.
      */
-    errorResponseHandler: (err: ExtendedError, notify?: boolean, defaultMsg?: string) => any
+    errorResponseHandler: (err: ExtendedError, notify?: boolean, defaultMsg?: string) => void
 }
 
 interface ExtendedError extends Error {
     isAbort: boolean,
     status: number,
-    data: { 
+    data: {
         message: string
         data: object
-     }
+    }
 }
 
 class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
@@ -39,12 +37,8 @@ class AppPocketBase extends PocketBase implements AppPocketBaseInterface {
         super(baseUrl, authStore, lang)
     }
 
-    logout(redirect = true) {
+    logout() {
         this.authStore.clear();
-
-        if (redirect) {
-            console.log(123)
-        }
     }
 
 

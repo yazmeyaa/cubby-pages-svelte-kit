@@ -19,6 +19,11 @@
       icon: App,
     },
     {
+      text: 'Architector',
+      linkTo: 'architector',
+      icon: CarbonForIbmDotcom,
+    },
+    {
       text: $_('navigation.collections'),
       linkTo: 'collections',
       icon: DataBase,
@@ -40,11 +45,6 @@
     },
   ] as const
 
-  // {
-  //    text: "Architector",
-  //    linkTo: "repl",
-  //    icon: CarbonForIbmDotcom,
-  // },
   // {
   //     text: $_("navigation.cubes"),
   //     linkTo: "cubes",
@@ -72,6 +72,4 @@
   // },
 </script>
 
-<slot links={links}>
-    
-</slot>
+<slot {links} />

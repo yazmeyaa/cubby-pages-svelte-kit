@@ -37,17 +37,19 @@
     theme = event.detail.theme
   }
 
-  $: console.log($user)
-
-  $: showAppSidebar = true
+  $: showAppSidebar = $auth?.isValid ?? true
+  $: console.log($auth, pb)
 
   onMount(() => {
+
+
     if(!data.auth) goto('/login')
   })
 
   import '$lib/scss/main.scss'
   import type { CarbonTheme } from 'carbon-components-svelte/types/Theme/Theme.svelte'
   import { goto } from '$app/navigation'
+  import { admin, auth } from '$lib/stores/admin'
 </script>
 
 <svelte:head>
