@@ -39,7 +39,7 @@
 
   $: console.log($user)
 
-  $: showAppSidebar = pb.authStore.isValid
+  $: showAppSidebar = true
 
   onMount(() => {
     if(!data.auth) goto('/login')

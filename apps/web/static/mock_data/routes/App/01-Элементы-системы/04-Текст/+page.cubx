@@ -1,0 +1,84 @@
+## Требования к серверу
+
+- OS: Ubuntu 22.04
+- CPU: 2
+- RAM: 4Gb
+- HDD: 20 Gb
+
+## Загрузка каталогов на сервер
+
+Каталог cubby-lts-main расположить в корневом каталоге сервера:
+
+
+    cd /
+
+
+В случае если надо развернуть другой проект (в репозитории на данный момент находится пилотный проект Цементного завода) необходимо заменить содержимое папки routes:
+
+```bash
+cd cubby-lts-main/cubby-docs-web/src/routes
+```
+
+Исходные данные лежат в папке 
+
+```bash
+cd cubby-data/
+```
+
+## Установка дополнительных компонентов
+
+### Установка NodeJS
+
+Обновляем пакеты
+
+```bash
+sudo apt update
+```
+
+Устанавливаем утилиту Curl
+
+```bash
+sudo apt install curl
+```
+
+Скачиваем и выполняем установку Node Version Manager
+
+```bash
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+```  
+
+Обновляем терминал
+
+```bash
+source ~/.profile
+```
+
+Проверяем доступные версии NodeJS
+
+```bash
+nvm ls-remote
+```
+
+Устанавливаем необходимую версию NodeJS
+
+```bash
+nvm install 16.17.0
+```
+
+Проверяем список установленных версий NodeJS
+
+```bash
+nvm list
+```
+
+Явно указываем какую версию NodeJS нужно использовать
+
+```bash
+nvm use 16.17.0
+```
+
+Проверяем используемую версию NodeJS
+
+```bash
+node -v
+```

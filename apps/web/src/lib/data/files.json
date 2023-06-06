@@ -1,0 +1,138 @@
+[
+  {
+    "id": "0",
+    "text": "App",
+    "type": "folder",
+    "children": [
+      {
+        "id": "0.1",
+        "text": "01-Элементы-системы",
+        "type": "folder",
+        "children": [
+          {
+            "id": "0.1.0",
+            "text": "01-Интерфейс",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.1.0.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/01-Элементы-системы/01-Интерфейс/+page.cubx"
+              }
+            ]
+          },
+          {
+            "id": "0.1.1",
+            "text": "02-Графики",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.1.1.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/01-Элементы-системы/02-Графики/+page.cubx"
+              }
+            ]
+          },
+          {
+            "id": "0.1.2",
+            "text": "03-Пиктограммы",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.1.2.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/01-Элементы-системы/03-Пиктограммы/+page.cubx"
+              }
+            ]
+          },
+          {
+            "id": "0.1.4",
+            "text": "04-Текст",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.1.4.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/01-Элементы-системы/04-Текст/+page.cubx"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "0.2",
+        "text": "02-Работа-с-данными",
+        "type": "folder",
+        "children": [
+          {
+            "id": "0.2.0",
+            "text": "01-Таблица-данных",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.2.0.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/02-Работа-с-данными/01-Таблица-данных/+page.cubx"
+              }
+            ]
+          },
+          {
+            "id": "0.2.1",
+            "text": "02-Сводная-таблица",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.2.1.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/02-Работа-с-данными/02-Сводная-таблица/+page.cubx"
+              }
+            ]
+          },
+          {
+            "id": "0.2.2",
+            "text": "04-Интерактивные-страницы",
+            "type": "folder",
+            "children": [
+              {
+                "id": "0.2.2.1",
+                "text": "+page.cubx",
+                "type": "file",
+                "path": "/mock_data/routes/App/02-Работа-с-данными/04-Интерактивные-страницы/+page.cubx"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "0.3",
+        "text": "03-Процесс-согласования",
+        "type": "folder",
+        "children": [
+          {
+            "id": "0.3.0",
+            "text": "01-Форма-согласования",
+            "type": "folder",
+            "children": [{ "id": "0.3.0.0", "text": "+page.cubx", "type":"file", "path": "/mock_data/routes/App/03-Процесс-согласования/01-Форма-согласования/+page.cubx" }]
+          },
+          {
+            "id": "0.3.1",
+            "text": "02-Финальные-объемы",
+            "children": [{ "id": "0.3.1.0", "text": "+page.cubx", "type":"file", "path": "/mock_data/routes/App/03-Процесс-согласования/02-Финальные-объемы/+page.cubx" }]
+          }
+        ]
+      },
+      {
+        "id": "0.4",
+        "text": "+layout.svelte",
+        "type":"file",
+        "path": "/mock_data/routes/+layout.svelte"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1868 @@
+<script>
+    import { CodeSnippet, Modal, Search, ClickableTile, Grid, Row, Column, Content } from 'carbon-components-svelte';
+    import { MeterChart } from "@carbon/charts-svelte";
+    import { RadarChart } from "@carbon/charts-svelte";
+    import { LineChart } from "@carbon/charts-svelte";
+    import { LollipopChart } from "@carbon/charts-svelte";
+    // import { AreaChart } from "@carbon/charts-svelte";
+	import { CirclePackChart } from "@carbon/charts-svelte";
+    import { WordCloudChart } from "@carbon/charts-svelte";
+    import { BarChartStacked } from "@carbon/charts-svelte";
+	import { AreaChart } from "@carbon/charts-svelte";
+	import { DonutChart } from "@carbon/charts-svelte";
+    import { AlluvialChart } from "@carbon/charts-svelte";
+    // import { LineChart } from "@carbon/charts-svelte";
+
+
+	import "@carbon/charts/styles.css";
+</script>
+
+# Графики
+
+Все представленные графики ниже максимально интерактивны — вы можете включать / выключать элементы датасетов, развернуть любой из графиков на полный экран. Так же, справа вверху каждого графика доступен просмотр элементов датасета в табличном виде (в модальном окне) и возможность скачать как сам датасет в CSV, так и график — единой картинкой. При забегании хвостатого манипулятора на размеченную координатную область графика вы сможете увидеть подсказки о текущих значениях. Что может быть прекраснее текущих значений за чашечкой утреннего эспрессо? или у вас шампанское?
+
+<br /><br />
+
+### Составная шкала (горизонтальная)
+
+<MeterChart
+	data={[{
+		"group": "emails",
+		"value": 202
+	},
+	{
+		"group": "photos",
+		"value": 654
+	},
+	{
+		"group": "text messages",
+		"value": 723
+	},
+	{
+		"group": "other",
+		"value": 120
+	}
+]}
+	options={{
+	"title": "Proportional Meter Chart - peak and statuses",
+	"height": "130px",
+	"meter": {
+		"peak": 1800,
+		"proportional": {
+			"total": 2000,
+			"unit": "GB"
+		},
+		"status": {
+			"ranges": [
+				{
+					"range": [
+						0,
+						800
+					],
+					"status": "success"
+				},
+				{
+					"range": [
+						800,
+						1800
+					],
+					"status": "warning"
+				},
+				{
+					"range": [
+						1800,
+						2000
+					],
+					"status": "danger"
+				}
+			]
+		}
+	},
+	"color": {
+		"pairing": {
+			"option": 2
+		}
+	}
+}}
+	/>
+<br /><br /><br /><br />
+
+### Радар, спарклайн и донат
+
+<Row>
+    <Column>
+         <br /> <br />
+    <RadarChart
+	data={[
+	{
+		"product": "Product 1",
+		"feature": "Price",
+		"score": 60
+	},
+	{
+		"product": "Product 1",
+		"feature": "Usability",
+		"score": 92
+	},
+	{
+		"product": "Product 1",
+		"feature": "Availability",
+		"score": 5
+	},
+	{
+		"product": "Product 1",
+		"feature": "Performance",
+		"score": 85
+	},
+	{
+		"product": "Product 1",
+		"feature": "Quality",
+		"score": 60
+	},
+	{
+		"product": "Product 2",
+		"feature": "Price",
+		"score": 70
+	},
+	{
+		"product": "Product 2",
+		"feature": "Usability",
+		"score": 63
+	},
+	{
+		"product": "Product 2",
+		"feature": "Availability",
+		"score": 78
+	},
+	{
+		"product": "Product 2",
+		"feature": "Performance",
+		"score": 50
+	},
+	{
+		"product": "Product 2",
+		"feature": "Quality",
+		"score": 30
+	}
+]}
+	options={{
+	"title": "Radar (centered)",
+	"radar": {
+		"axes": {
+			"angle": "feature",
+			"value": "score"
+		},
+		"alignment": "center"
+	},
+	"data": {
+		"groupMapsTo": "product"
+	},
+	"legend": {
+		"alignment": "center"
+	},
+	"height": "400px"
+}}
+	/>
+   
+</Column>
+<Column>
+<AreaChart
+	data={[
+	{
+		"group": "Dataset 1",
+		"date": 1558453260000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453320000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453380000,
+		"value": 5
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453440000,
+		"value": 1
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453500000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453560000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453620000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453680000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453740000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453800000,
+		"value": 0
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453860000,
+		"value": 5
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453920000,
+		"value": 5
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558453980000,
+		"value": 6
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454040000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454100000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454160000,
+		"value": 6
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454280000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454340000,
+		"value": 6
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454400000,
+		"value": 0
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454460000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454520000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454580000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454640000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454700000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454760000,
+		"value": 2
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454820000,
+		"value": 4
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454880000,
+		"value": 1
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558454940000,
+		"value": 1
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558455000000,
+		"value": 3
+	},
+	{
+		"group": "Dataset 1",
+		"date": 1558455060000,
+		"value": 2
+	}
+]}
+	options={{
+	"title": "Sparkline (modified area chart)",
+	"height": "150px",
+	"grid": {
+		"x": {
+			"enabled": false
+		},
+		"y": {
+			"enabled": false
+		}
+	},
+	"axes": {
+		"bottom": {
+			"visible": false,
+			"title": "2019 Annual Sales Figures",
+			"mapsTo": "date",
+			"scaleType": "time"
+		},
+		"left": {
+			"visible": false,
+			"mapsTo": "value",
+			"scaleType": "linear"
+		}
+	},
+	"color": {
+		"gradient": {
+			"enabled": true
+		}
+	},
+	"points": {
+		"enabled": false
+	},
+	"legend": {
+		"enabled": false
+	}
+}}
+	/>
+     <br />
+    <DonutChart
+	data={[
+	{
+		"group": "2V2N 9KYPM version 1",
+		"value": 20000
+	},
+	{
+		"group": "L22I P66EP L22I P66EP L22I P66EP",
+		"value": 65000
+	},
+	{
+		"group": "JQAI 2M4L1",
+		"value": 75000
+	},
+	{
+		"group": "J9DZ F37AP",
+		"value": 1200
+	},
+	{
+		"group": "YEL48 Q6XK YEL48",
+		"value": 10000
+	},
+	{
+		"group": "Misc",
+		"value": 25000
+	}
+]}
+	options={{
+	"title": "Donut (centered)",
+	"resizable": true,
+	"legend": {
+		"alignment": "center"
+	},
+	"donut": {
+		"center": {
+			"label": "Browsers"
+		},
+		"alignment": "center"
+	},
+	"height": "400px"
+}}
+	/>
+</Column>
+</Row>
+
+<br /><br /><br /><br />
+
+### Линии
+
+<Row>
+    <Column>
+        <LineChart
+            data={[
+            {
+                "group": "Dataset 1",
+                "date": "2018-12-31T21:00:00.000Z",
+                "value": -10000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-01T02:00:00.000Z",
+                "value": -12000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-01T07:00:00.000Z",
+                "value": -14000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-01T21:00:00.000Z",
+                "value": -25000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-01T23:00:00.000Z",
+                "value": -26000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-02T21:00:00.000Z",
+                "value": -10000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-03T02:00:00.000Z",
+                "value": 10000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-03T07:00:00.000Z",
+                "value": 12000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-04T21:00:00.000Z",
+                "value": 45000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-06T21:00:00.000Z",
+                "value": 49000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-07T12:00:00.000Z",
+                "value": 45000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-08T21:00:00.000Z",
+                "value": 50000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-09T02:00:00.000Z",
+                "value": 52000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-09T12:00:00.000Z",
+                "value": 55000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-09T21:00:00.000Z",
+                "value": 50000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-11T21:00:00.000Z",
+                "value": 65000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-12T21:00:00.000Z",
+                "value": 80000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-14T07:00:00.000Z",
+                "value": 85000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-15T04:00:00.000Z",
+                "value": 90000
+            },
+            {
+                "group": "Dataset 1",
+                "date": "2019-01-15T15:00:00.000Z",
+                "value": 70000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2018-12-31T21:00:00.000Z",
+                "value": 20000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-01T00:00:00.000Z",
+                "value": 22000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-01T13:00:00.000Z",
+                "value": 24000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-01T21:00:00.000Z",
+                "value": 35000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-02T04:00:00.000Z",
+                "value": 36000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-02T21:00:00.000Z",
+                "value": 20000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-03T03:00:00.000Z",
+                "value": 20000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-03T15:00:00.000Z",
+                "value": 22000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-04T21:00:00.000Z",
+                "value": 62000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-05T21:00:00.000Z",
+                "value": 52000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-06T21:00:00.000Z",
+                "value": 52000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-07T12:00:00.000Z",
+                "value": 52000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-08T21:00:00.000Z",
+                "value": 60000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-09T02:00:00.000Z",
+                "value": 62000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-09T07:00:00.000Z",
+                "value": 62000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-11T21:00:00.000Z",
+                "value": 65000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-13T21:00:00.000Z",
+                "value": 40000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-15T02:00:00.000Z",
+                "value": 45000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-15T07:00:00.000Z",
+                "value": 35000
+            },
+            {
+                "group": "Dataset 2",
+                "date": "2019-01-15T15:00:00.000Z",
+                "value": 30000
+            }
+        ]}
+            options={{
+            "title": "Line (dense time series)",
+            "axes": {
+                "bottom": {
+                    "title": "2019 Annual Sales Figures",
+                    "mapsTo": "date",
+                    "scaleType": "time"
+                },
+                "left": {
+                    "mapsTo": "value",
+                    "title": "Conversion rate",
+                    "scaleType": "linear"
+                }
+            },
+            "curve": "curveMonotoneX",
+            "height": "400px"
+        }}
+            />
+    </Column>
+     <Column>
+        <LollipopChart
+            data={[
+            {
+                "group": "Dataset 1",
+                "key": "Qty",
+                "value": 34200
+            },
+            {
+                "group": "Dataset 2",
+                "key": "More",
+                "value": 34200
+            },
+            {
+                "group": "Dataset 3",
+                "key": "Sold",
+                "value": 41200
+            },
+            {
+                "group": "Dataset 4",
+                "key": "Restocking",
+                "value": 22000
+            }
+        ]}
+            options={{
+            "title": "Lollipop (horizontal) - presentation",
+            "axes": {
+                "left": {
+                    "title": "2019 Annual Sales Figures",
+                    "scaleType": "labels",
+                    "mapsTo": "key"
+                },
+                "bottom": {
+                    "mapsTo": "value"
+                }
+            },
+            "points": {
+                "radius": 7
+            },
+            "height": "400px"
+        }}
+	/>
+
+    </Column>
+</Row>
+<br /><br /><br /><br />
+
+### Бары и слова
+
+<Row>
+    <Column>
+
+<BarChartStacked
+	data={[
+	{
+		"group": "Dataset 1",
+		"key": "Qty",
+		"value": 65000
+	},
+	{
+		"group": "Dataset 1",
+		"key": "More",
+		"value": 29123
+	},
+	{
+		"group": "Dataset 1",
+		"key": "Sold",
+		"value": 35213
+	},
+	{
+		"group": "Dataset 1",
+		"key": "Restocking",
+		"value": 51213
+	},
+	{
+		"group": "Dataset 1",
+		"key": "Misc",
+		"value": 16932
+	},
+	{
+		"group": "Dataset 2",
+		"key": "Qty",
+		"value": 32432
+	},
+	{
+		"group": "Dataset 2",
+		"key": "More",
+		"value": 21312
+	},
+	{
+		"group": "Dataset 2",
+		"key": "Sold",
+		"value": 56456
+	},
+	{
+		"group": "Dataset 2",
+		"key": "Restocking",
+		"value": 21312
+	},
+	{
+		"group": "Dataset 2",
+		"key": "Misc",
+		"value": 34234
+	},
+	{
+		"group": "Dataset 3",
+		"key": "Qty",
+		"value": 12312
+	},
+	{
+		"group": "Dataset 3",
+		"key": "More",
+		"value": 23232
+	},
+	{
+		"group": "Dataset 3",
+		"key": "Sold",
+		"value": 34232
+	},
+	{
+		"group": "Dataset 3",
+		"key": "Restocking",
+		"value": 12312
+	},
+	{
+		"group": "Dataset 3",
+		"key": "Misc",
+		"value": 34234
+	},
+	{
+		"group": "Dataset 4",
+		"key": "Qty",
+		"value": 32423
+	},
+	{
+		"group": "Dataset 4",
+		"key": "More",
+		"value": 21313
+	},
+	{
+		"group": "Dataset 4",
+		"key": "Sold",
+		"value": 64353
+	},
+	{
+		"group": "Dataset 4",
+		"key": "Restocking",
+		"value": 24134
+	},
+	{
+		"group": "Dataset 4",
+		"key": "Misc",
+		"value": 32423
+	}
+]}
+	options={{
+	"title": "Horizontal stacked bar (discrete)",
+	"axes": {
+		"left": {
+			"scaleType": "labels"
+		},
+		"bottom": {
+			"stacked": true
+		}
+	},
+	"height": "400px"
+}}
+	/>
+
+    </Column>
+     <Column>
+        
+<WordCloudChart
+	data={[
+	{
+		"word": "Lorem",
+		"value": 52,
+		"group": "Second"
+	},
+	{
+		"word": "ipsum",
+		"value": 25,
+		"group": "Second"
+	},
+	{
+		"word": "dolor",
+		"value": 51,
+		"group": "Second"
+	},
+	{
+		"word": "amet",
+		"value": 40,
+		"group": "First"
+	},
+	{
+		"word": "consectetur",
+		"value": 25,
+		"group": "Fourth"
+	},
+	{
+		"word": "adipiscing",
+		"value": 36,
+		"group": "Fourth"
+	},
+	{
+		"word": "elit",
+		"value": 40,
+		"group": "First"
+	},
+	{
+		"word": "Duis",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "dapibus",
+		"value": 49,
+		"group": "Third"
+	},
+	{
+		"word": "urna",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "tellus",
+		"value": 54,
+		"group": "Second"
+	},
+	{
+		"word": "placerat",
+		"value": 57,
+		"group": "Third"
+	},
+	{
+		"word": "leo",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "semper",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "venenatis",
+		"value": 43,
+		"group": "Fourth"
+	},
+	{
+		"word": "Vestibulum",
+		"value": 50,
+		"group": "Fourth"
+	},
+	{
+		"word": "imperdiet",
+		"value": 30,
+		"group": "Fourth"
+	},
+	{
+		"word": "erat",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "auctor",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "purus",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "ullamcorper",
+		"value": 18,
+		"group": "Fourth"
+	},
+	{
+		"word": "porta",
+		"value": 52,
+		"group": "Second"
+	},
+	{
+		"word": "Pellentesque",
+		"value": 40,
+		"group": "Fourth"
+	},
+	{
+		"word": "porta",
+		"value": 39,
+		"group": "Second"
+	},
+	{
+		"word": "aliquam",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "est",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "bibendum",
+		"value": 46,
+		"group": "Third"
+	},
+	{
+		"word": "lorem",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "Morbi",
+		"value": 46,
+		"group": "Second"
+	},
+	{
+		"word": "dui",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "non",
+		"value": 42,
+		"group": "First"
+	},
+	{
+		"word": "neque",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "semper",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "aliquam",
+		"value": 34,
+		"group": "Third"
+	},
+	{
+		"word": "mollis",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "sapien",
+		"value": 39,
+		"group": "Second"
+	},
+	{
+		"word": "Interdum",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "malesuada",
+		"value": 18,
+		"group": "Fourth"
+	},
+	{
+		"word": "fames",
+		"value": 41,
+		"group": "Second"
+	},
+	{
+		"word": "ante",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "ipsum",
+		"value": 53,
+		"group": "Second"
+	},
+	{
+		"word": "primis",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "faucibus",
+		"value": 29,
+		"group": "Third"
+	},
+	{
+		"word": "Fusce",
+		"value": 20,
+		"group": "Second"
+	},
+	{
+		"word": "magna",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "quis",
+		"value": 35,
+		"group": "First"
+	},
+	{
+		"word": "arcu",
+		"value": 46,
+		"group": "First"
+	},
+	{
+		"word": "aliquet",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "porttitor",
+		"value": 18,
+		"group": "Fourth"
+	},
+	{
+		"word": "amet",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "nisl",
+		"value": 51,
+		"group": "First"
+	},
+	{
+		"word": "Praesent",
+		"value": 34,
+		"group": "Third"
+	},
+	{
+		"word": "varius",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "sit",
+		"value": 58,
+		"group": "First"
+	},
+	{
+		"word": "amet",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "turpis",
+		"value": 24,
+		"group": "Second"
+	},
+	{
+		"word": "non",
+		"value": 47,
+		"group": "First"
+	},
+	{
+		"word": "finibus",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "Pellentesque",
+		"value": 48,
+		"group": "Fourth"
+	},
+	{
+		"word": "habitant",
+		"value": 27,
+		"group": "Third"
+	},
+	{
+		"word": "morbi",
+		"value": 19,
+		"group": "Second"
+	},
+	{
+		"word": "tristique",
+		"value": 18,
+		"group": "Fourth"
+	},
+	{
+		"word": "senectus",
+		"value": 43,
+		"group": "Third"
+	},
+	{
+		"word": "netus",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "malesuada",
+		"value": 18,
+		"group": "Fourth"
+	},
+	{
+		"word": "fames",
+		"value": 37,
+		"group": "Second"
+	},
+	{
+		"word": "turpis",
+		"value": 24,
+		"group": "Second"
+	},
+	{
+		"word": "egestas",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "Aliquam",
+		"value": 45,
+		"group": "Third"
+	},
+	{
+		"word": "erat",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "volutpat",
+		"value": 57,
+		"group": "Third"
+	},
+	{
+		"word": "Aliquam",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "dapibus",
+		"value": 42,
+		"group": "Third"
+	},
+	{
+		"word": "urna",
+		"value": 36,
+		"group": "First"
+	},
+	{
+		"word": "vehicula",
+		"value": 19,
+		"group": "Third"
+	},
+	{
+		"word": "Quisque",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "convallis",
+		"value": 25,
+		"group": "Fourth"
+	},
+	{
+		"word": "finibus",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "felis",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "quis",
+		"value": 22,
+		"group": "First"
+	},
+	{
+		"word": "aliquam",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "massa",
+		"value": 55,
+		"group": "Second"
+	},
+	{
+		"word": "sagittis",
+		"value": 18,
+		"group": "Third"
+	},
+	{
+		"word": "Nam",
+		"value": 32,
+		"group": "First"
+	},
+	{
+		"word": "ipsum",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "orci",
+		"value": 38,
+		"group": "First"
+	},
+	{
+		"word": "ornare",
+		"value": 18,
+		"group": "Second"
+	},
+	{
+		"word": "non",
+		"value": 18,
+		"group": "First"
+	},
+	{
+		"word": "arcu",
+		"value": 32,
+		"group": "First"
+	},
+	{
+		"word": "consequat",
+		"value": 55,
+		"group": "Fourth"
+	},
+	{
+		"word": "tempus",
+		"value": 23,
+		"group": "Second"
+	},
+	{
+		"word": "lobortis",
+		"value": 47,
+		"group": "Third"
+	},
+	{
+		"word": "magna",
+		"value": 18,
+		"group": "Second"
+	}
+]}
+	options={{
+	"title": "Word cloud",
+	"resizable": true,
+	"color": {
+		"pairing": {
+			"option": 3
+		}
+	},
+	"height": "400px"
+}}
+	/>
+
+        
+    </Column>
+</Row>
+
+<br /><br /><br /><br />
+
+### Область
+
+<Row>
+     <Column>
+
+<CirclePackChart
+	data={[
+	{
+		"name": "North America",
+		"children": [
+			{
+				"name": "Canada",
+				"children": [
+					{
+						"name": "Toronto",
+						"value": 50
+					},
+					{
+						"name": "Montreal",
+						"value": 100
+					}
+				]
+			},
+			{
+				"name": "United States",
+				"children": [
+					{
+						"name": "Texas",
+						"value": 50
+					},
+					{
+						"name": "New York",
+						"value": 40
+					}
+				]
+			},
+			{
+				"name": "Mexico",
+				"value": 100
+			}
+		]
+	},
+	{
+		"name": "South America",
+		"children": [
+			{
+				"name": "Brazil",
+				"value": 2800
+			},
+			{
+				"name": "Argentina",
+				"value": 10000
+			},
+			{
+				"name": "Peru",
+				"value": 500
+			}
+		]
+	},
+	{
+		"name": "Africa",
+		"children": [
+			{
+				"name": "Egypt",
+				"value": 50
+			},
+			{
+				"name": "Morocco",
+				"value": 10
+			},
+			{
+				"name": "Chad",
+				"value": 200
+			},
+			{
+				"name": "Nigeria",
+				"value": 80
+			},
+			{
+				"name": "Libya",
+				"value": 90
+			}
+		]
+	},
+	{
+		"name": "Europe",
+		"children": [
+			{
+				"name": "Portugal",
+				"value": 2000
+			},
+			{
+				"name": "Spain",
+				"value": 400
+			},
+			{
+				"name": "France",
+				"value": 500
+			},
+			{
+				"name": "Italy",
+				"value": 300
+			},
+			{
+				"name": "Poland",
+				"value": 100
+			},
+			{
+				"name": "Ukraine",
+				"value": 900
+			}
+		]
+	}
+]}
+	options={{
+            "title": "Three Levels Hierarchy",
+            "canvasZoom": {
+                "enabled": true
+            },
+            "height": "400px"
+        }}
+	/>
+
+    </Column>
+    <Column>
+        <AreaChart
+	data={[
+	{
+		"group": "Dataset 1",
+		"date": "2018-12-31T21:00:00.000Z",
+		"value": 47263,
+		"min": 40000,
+		"max": 50000
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-04T21:00:00.000Z",
+		"value": 14178,
+		"min": 10000,
+		"max": 20000
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-07T21:00:00.000Z",
+		"value": 23094,
+		"min": 10000,
+		"max": 25000
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-12T21:00:00.000Z",
+		"value": 45281,
+		"min": 42000,
+		"max": 50000
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-18T21:00:00.000Z",
+		"value": -63954,
+		"min": -70000,
+		"max": -10000
+	}
+]}
+	options={{
+	"title": "Bounded area (time series - natural curve)",
+	"legend": {
+		"enabled": false
+	},
+	"bounds": {
+		"upperBoundMapsTo": "max",
+		"lowerBoundMapsTo": "min"
+	},
+	"axes": {
+		"bottom": {
+			"title": "2019 Annual Sales Figures",
+			"mapsTo": "date",
+			"scaleType": "time"
+		},
+		"left": {
+			"mapsTo": "value",
+			"scaleType": "linear"
+		}
+	},
+	"curve": "curveNatural",
+	"height": "400px"
+}}
+	/>
+    </Column>
+</Row>
+
+<br /><br /><br /><br />
+
+### Диаграмма отношений
+
+<Row>
+     <Column>
+
+
+<AlluvialChart
+	data={[
+	{
+		"source": "About Modal",
+		"target": "Data and AI, AI Apps",
+		"value": 5
+	},
+	{
+		"source": "About Modal",
+		"target": "Data and AI, Info Architecture",
+		"value": 4
+	},
+	{
+		"source": "About Modal",
+		"target": "Public Cloud",
+		"value": 3
+	},
+	{
+		"source": "About Modal",
+		"target": "Security",
+		"value": 4
+	},
+	{
+		"source": "About Modal",
+		"target": "Automation",
+		"value": 8
+	},
+	{
+		"source": "Cards",
+		"target": "Data and AI, AI Apps",
+		"value": 6
+	},
+	{
+		"source": "Cards",
+		"target": "Data and AI, Info Architecture",
+		"value": 15
+	},
+	{
+		"source": "Cards",
+		"target": "Public Cloud",
+		"value": 2
+	},
+	{
+		"source": "Cards",
+		"target": "Security",
+		"value": 10
+	},
+	{
+		"source": "Cards",
+		"target": "Automation",
+		"value": 13
+	},
+	{
+		"source": "Create Flow",
+		"target": "Data and AI, AI Apps",
+		"value": 2
+	},
+	{
+		"source": "Create Flow",
+		"target": "Data and AI, Info Architecture",
+		"value": 15
+	},
+	{
+		"source": "Create Flow",
+		"target": "Public Cloud",
+		"value": 1
+	},
+	{
+		"source": "Create Flow",
+		"target": "Security",
+		"value": 6
+	},
+	{
+		"source": "Create Flow",
+		"target": "Automation",
+		"value": 15
+	},
+	{
+		"source": "Notifications",
+		"target": "Data and AI, Info Architecture",
+		"value": 14
+	},
+	{
+		"source": "Notifications",
+		"target": "Public Cloud",
+		"value": 3
+	},
+	{
+		"source": "Notifications",
+		"target": "Security",
+		"value": 3
+	},
+	{
+		"source": "Page Header",
+		"target": "Data and AI, AI Apps",
+		"value": 4
+	},
+	{
+		"source": "Page Header",
+		"target": "Data and AI, Info Architecture",
+		"value": 8
+	},
+	{
+		"source": "Page Header",
+		"target": "Automation",
+		"value": 13
+	}
+]}
+	options={{
+	"title": "Alluvial (gradient)",
+	"alluvial": {
+		"nodes": [
+			{
+				"name": "About Modal",
+				"category": "Pattern"
+			},
+			{
+				"name": "Cards",
+				"category": "Pattern"
+			},
+			{
+				"name": "Create Flow",
+				"category": "Pattern"
+			},
+			{
+				"name": "Page Header",
+				"category": "Pattern"
+			},
+			{
+				"name": "Notifications",
+				"category": "Pattern"
+			},
+			{
+				"name": "Data and AI, AI Apps",
+				"category": "Group"
+			},
+			{
+				"name": "Data and AI, Info Architecture",
+				"category": "Group"
+			},
+			{
+				"name": "Public Cloud",
+				"category": "Group"
+			},
+			{
+				"name": "Security",
+				"category": "Group"
+			},
+			{
+				"name": "Automation",
+				"category": "Group"
+			}
+		]
+	},
+	"height": "600px",
+	"color": {
+		"scale": {
+			"Cards": "#da1e28",
+			"About Modal": "#b28600",
+			"Create Flow": "#198038",
+			"Page Header": "#ee538b",
+			"Notifications": "#08bdba",
+			"Data and AI, AI Apps": "#1192e8",
+			"Data and AI, Info Architecture": "#a56eff",
+			"Security": "#009d9a",
+			"Automation": "#fa4d56",
+			"Public Cloud": "#198038"
+		},
+		"gradient": {
+			"enabled": true
+		}
+	}
+}}
+	/>
+    </Column>
+</Row>
+
+
+<br /><br /><br /><br />
+
+### Расширенные элементы легенды (внизу) и навигации по области графика (наверху)
+
+<Row>
+    <Column>
+        
+<LineChart
+	data={[
+	{
+		"group": "Dataset 1",
+		"date": "2018-12-31T21:00:00.000Z",
+		"value": 50000,
+		"surplus": 998291289.4063262
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-04T21:00:00.000Z",
+		"value": 65000,
+		"surplus": 44322375.60246114
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-07T21:00:00.000Z",
+		"value": null,
+		"surplus": 15002.99073712208
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-12T21:00:00.000Z",
+		"value": 49213,
+		"surplus": 344215649.92674375
+	},
+	{
+		"group": "Dataset 1",
+		"date": "2019-01-16T21:00:00.000Z",
+		"value": 51213,
+		"surplus": 927211134.5548383
+	},
+	{
+		"group": "Dataset 2",
+		"date": "2019-01-01T21:00:00.000Z",
+		"value": 0,
+		"surplus": 1649.7073476170133
+	},
+	{
+		"group": "Dataset 2",
+		"date": "2019-01-05T21:00:00.000Z",
+		"value": 57312,
+		"surplus": 922079186.9786831
+	},
+	{
+		"group": "Dataset 2",
+		"date": "2019-01-07T21:00:00.000Z",
+		"value": 27432,
+		"surplus": 473740143.7501024
+	},
+	{
+		"group": "Dataset 2",
+		"date": "2019-01-14T21:00:00.000Z",
+		"value": 70323,
+		"surplus": 384310255.2919842
+	},
+	{
+		"group": "Dataset 2",
+		"date": "2019-01-18T21:00:00.000Z",
+		"value": 21300,
+		"surplus": 128333337.97103907
+	},
+	{
+		"group": "Dataset 3",
+		"date": "2018-12-31T21:00:00.000Z",
+		"value": 40000,
+		"surplus": 822605472.4400147
+	},
+	{
+		"group": "Dataset 3",
+		"date": "2019-01-04T21:00:00.000Z",
+		"value": null,
+		"surplus": 19018.98735547278
+	},
+	{
+		"group": "Dataset 3",
+		"date": "2019-01-07T21:00:00.000Z",
+		"value": 18000,
+		"surplus": 302231190.2023462
+	},
+	{
+		"group": "Dataset 3",
+		"date": "2019-01-12T21:00:00.000Z",
+		"value": 39213,
+		"surplus": 895894669.1717405
+	},
+	{
+		"group": "Dataset 3",
+		"date": "2019-01-16T21:00:00.000Z",
+		"value": 61213,
+		"surplus": 279945702.28354067
+	},
+	{
+		"group": "Dataset 4",
+		"date": "2019-01-01T21:00:00.000Z",
+		"value": 20000,
+		"surplus": 84525401.7927729
+	},
+	{
+		"group": "Dataset 4",
+		"date": "2019-01-05T21:00:00.000Z",
+		"value": 37312,
+		"surplus": 160920263.29805326
+	},
+	{
+		"group": "Dataset 4",
+		"date": "2019-01-07T21:00:00.000Z",
+		"value": 51432,
+		"surplus": 1090515248.4013133
+	},
+	{
+		"group": "Dataset 4",
+		"date": "2019-01-14T21:00:00.000Z",
+		"value": 25332,
+		"surplus": 184247556.04878676
+	},
+	{
+		"group": "Dataset 4",
+		"date": "2019-01-18T21:00:00.000Z",
+		"value": null,
+		"surplus": 11586.126379555966
+	}
+]}
+	options={{
+	"title": "Line (time series) - two icons",
+	"axes": {
+		"bottom": {
+			"title": "2019 Annual Sales Figures",
+			"mapsTo": "date",
+			"scaleType": "time"
+		},
+		"left": {
+			"mapsTo": "value",
+			"title": "Conversion rate",
+			"scaleType": "linear"
+		}
+	},
+	"curve": "curveMonotoneX",
+	"toolbar": {
+		"enabled": true,
+		"numberOfIcons": 2,
+		"controls": [
+			{
+				"type": "Reset zoom"
+			},
+			{
+				"type": "Zoom in"
+			},
+			{
+				"type": "Zoom out"
+			}
+		]
+	},
+	"zoomBar": {
+		"top": {
+			"enabled": true
+		}
+	},
+	"height": "600px",
+    "legend": {
+        "additionalItems": [
+			{
+				"type": "line",
+				"name": "Line"
+			},
+			{
+				"type": "area",
+				"name": "Poor area"
+			},
+			{
+				"type": "area",
+				"name": "Satisfactory area"
+			},
+			{
+				"type": "area",
+				"name": "Great area"
+			},
+			{
+				"type": "quartile",
+				"name": "Quartiles"
+			},
+			{
+				"type": "size",
+				"name": "Size"
+			},
+			{
+				"type": "radius",
+				"name": "Radius"
+			}
+		]
+    }
+}}
+	/>
+    </Column>
+</Row>

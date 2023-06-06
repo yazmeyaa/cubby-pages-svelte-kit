@@ -1,0 +1,186 @@
+<script lang="ts">
+	import QueryGrid from '$lib/QueryGrid.svelte';
+    import {  Row, Column, Dropdown, Tag } from 'carbon-components-svelte';
+    import ChoreButton from '$lib/ChoreButton.svelte';
+    import el from 'date-fns/locale/el';
+    let srcCube = 'sales{adjustment';
+    let choreApprove = 'test888';
+    let filterBlank = 'Version¦6';
+    let filterToapprove = 'Version¦3';
+    let eleMappingApprove = 'Version¦3->4';
+    let eleMappingCancel = 'Version¦6->3';
+    let eleMappingClean = 'Version¦6->4';
+    let cube = 'sales{adjustment';
+    let chore_name = 'test888';
+    let filter = 'version¦1';
+    let mapp = 'version¦1->3';
+   	import { GaugeChart } from "@carbon/charts-svelte";
+	import { Grid } from "carbon-components-svelte";	
+	import "@carbon/styles/css/styles.css";
+	import "@carbon/charts/styles.css";
+	import "carbon-components-svelte/css/all.css";
+</script>
+<QueryGrid
+    title='Sales Adjustment'
+    description='Ввод корректировок для плана продаж'
+    syntax="mdx:tm1"
+    meta={{
+        rows: ['product'],
+        columns: ['month'],
+    }}
+    query={{
+        select: `
+            {TM1SubsetToSet([month].[month], 'dt')} ON COLUMNS,
+            {TM1SubsetToSet([product].[product], 'sales')} ON ROWS
+        `,
+        from: 'sales{adjustment',
+        where: {
+            version: ['dt', null],
+            year: ['dt', null],
+            'indicator{sales':['dt', null]
+        },
+        suppress_zero: {
+            rows: false,
+            columns: false,
+        },
+        options: {
+            suppress_zero: true,
+        },
+    }}
+    query_options={{
+        
+    }}
+/>
+
+
+<Row>
+    <Column>  
+        <div style="height:20px;"></div>
+        <ChoreButton chore={chore_name} options={{pCube: cube, pEleMapping: mapp, pFilter: filter}}>Отправить</ChoreButton>
+    </Column>
+    <Column>  
+        <div style='height:20px;'></div>
+        <ChoreButton chore={choreApprove} options={{pCube: srcCube, pEleMapping: eleMappingApprove, pFilter: filterToapprove}}>Согласовать</ChoreButton>
+    </Column>
+    <Column>  
+        <div style='height:20px;'></div>
+        <ChoreButton chore={choreApprove} options={{pCube: srcCube, pEleMapping: eleMappingCancel, pFilter: filterBlank}}>Отклонить</ChoreButton>
+    </Column>
+
+    <Column>  
+        <div style='height:20px;'></div>
+        <ChoreButton chore={choreApprove} options={{pCube: srcCube, pEleMapping: eleMappingClean, pFilter: filterBlank}}>Очистить </ChoreButton>
+    </Column>
+</Row>
+
+<Grid>
+	<Row style="min-height:200px;">
+		<Column>
+			<GaugeChart
+				data={[
+					{
+						"group": "value",
+						"value": 133
+					},
+				]}
+				options={{
+					"title": "Не начали",
+					"resizable": true,
+					"gauge": {
+						"type": "full",
+						"status": "danger"
+					}
+				}}
+			/>
+		</Column>
+		<Column>
+			<GaugeChart
+				data={[
+					{
+						"group": "value",
+						"value": 100
+					},
+				]}
+				options={{
+					title: "В работе",
+					resizable: true,
+		
+					"gauge": {
+						"type": "full",
+						"status": "danger"
+					}
+				}}
+			/>
+		</Column>
+		<Column>
+			<GaugeChart
+				data={[
+					{
+						"group": "value",
+						"value": 100
+					},
+				]}
+				options={{
+					title: "На согласовании",
+					resizable: true,
+		
+					"gauge": {
+						"type": "full",
+						"status": "danger"
+					}
+				}}
+			/>
+		</Column>
+        <Column>
+			<GaugeChart
+				data={[
+					{
+						"group": "value",
+						"value": 100
+					},
+				]}
+				options={{
+					title: "Согласованно",
+					resizable: true,
+		
+					"gauge": {
+						"type": "full",
+						"status": "danger"
+					}
+				}}
+			/>
+		</Column>
+	</Row>
+</Grid>
+
+<br>
+<br>
+<br>
+
+<QueryGrid
+    title="Согласование"
+    description="Отчет о ходе процесса согласования"
+    syntax="mdx:tm1"
+    meta={{
+        rows: ['indicator{approve'],
+        columns: ['version'], 
+    }}
+    query={{
+        select: `
+            {TM1SubsetToSet([version].[version], '1')} ON COLUMNS,
+            {TM1SubsetToSet([indicator{approve].[indicator{approve], '1')} ON ROWS
+        `,
+        from: 'approve',
+        
+        where: {
+            year: null,  
+        },
+        suppress_zero: {
+            rows: false,
+            columns: false,
+        },
+        options: {
+            suppress_zero: true,
+        }
+    }}
+/>

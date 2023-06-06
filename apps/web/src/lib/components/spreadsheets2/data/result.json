@@ -1,0 +1,477 @@
+[
+  {
+    "name": "00.02._Адм{Мэппинг_статей",
+    "demensions": [
+      "Статьи_Затрат",
+      "Элементы_Затрат",
+      "Показатели_Адм{Мэппинг_статей"
+    ]
+  },
+  { "name": "approve", "demensions": ["year", "version", "indicator{approve"] },
+  {
+    "name": "auxiliary",
+    "demensions": ["year", "month", "version", "indicator{auxiliary"]
+  },
+  {
+    "name": "cement_mills{kpi",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "mill",
+      "indicator{cement_mills{kpi"
+    ]
+  },
+  {
+    "name": "cement_mills{production",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "mill",
+      "indicator{cement_mills{production"
+    ]
+  },
+  {
+    "name": "electricity",
+    "demensions": ["year", "month", "version", "indicator{electricity"]
+  },
+  {
+    "name": "electricity{sse",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "mill",
+      "indicator{electricity{sse"
+    ]
+  },
+  {
+    "name": "fuel_cons{alternative",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{fuel_cons{alternative"
+    ]
+  },
+  {
+    "name": "fuel_cons{kpi",
+    "demensions": ["year", "month", "version", "indicator{fuel_cons{kpi"]
+  },
+  {
+    "name": "fuel_cons{production",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{fuel_cons{production"
+    ]
+  },
+  {
+    "name": "indicators{by_pr_by_m",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "mill",
+      "indicator{indicators{by_pr_by_m"
+    ]
+  },
+  {
+    "name": "indicators{simple",
+    "demensions": ["year", "month", "version", "indicator{indicators{simple"]
+  },
+  {
+    "name": "kiln",
+    "demensions": ["year", "month", "version", "indicator{kiln"]
+  },
+  {
+    "name": "kiln{cube",
+    "demensions": ["Год", "Месяц", "Версия", "Показатели"]
+  },
+  {
+    "name": "mat_cons{cement",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{mat_cons{cement"
+    ]
+  },
+  {
+    "name": "mat_cons{raw_meal",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{mat_cons{raw_meal"
+    ]
+  },
+  {
+    "name": "nai95",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "mill",
+      "indicator{nai95"
+    ]
+  },
+  {
+    "name": "quarry{kpi",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{quarry{kpi"
+    ]
+  },
+  {
+    "name": "quarry{production",
+    "demensions": ["year", "month", "version", "indicator{quarry{production"]
+  },
+  {
+    "name": "raw_meal",
+    "demensions": ["year", "month", "version", "indicator{raw_mill"]
+  },
+  {
+    "name": "recipes{cement",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{recipes{cement"
+    ]
+  },
+  {
+    "name": "recipes{raw_meal",
+    "demensions": [
+      "year",
+      "version",
+      "product",
+      "indicator{recipes{cement",
+      "indicator{recipes{raw_meal"
+    ]
+  },
+  {
+    "name": "sales{adjustment",
+    "demensions": ["year", "month", "version", "product", "indicator{sales"]
+  },
+  {
+    "name": "sales{bottom_up",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "sold-to",
+      "ship-to",
+      "indicator{sales"
+    ]
+  },
+  {
+    "name": "sales{cement",
+    "demensions": ["year", "month", "version", "product", "indicator{sales"]
+  },
+  {
+    "name": "}Capabilities",
+    "demensions": ["}Features", "}Permissions", "}Groups"]
+  },
+  {
+    "name": "}CellSecurity_fuel_cons{production",
+    "demensions": [
+      "year",
+      "month",
+      "version",
+      "product",
+      "indicator{fuel_cons{production",
+      "}Groups"
+    ]
+  },
+  {
+    "name": "}CellSecurity_}CubeSecurityProperties",
+    "demensions": ["}Cubes", "}CubeSecurityProperties", "}Groups"]
+  },
+  {
+    "name": "}ClientCAMAssociatedGroups",
+    "demensions": ["}CAMAssociatedGroups", "}Groups"]
+  },
+  { "name": "}ClientGroups", "demensions": ["}Clients", "}Groups"] },
+  {
+    "name": "}ClientProperties",
+    "demensions": ["}Clients", "}ClientProperties"]
+  },
+  { "name": "}ClientSettings", "demensions": ["}Clients", "}ClientSettings"] },
+  { "name": "}CubeProperties", "demensions": ["}Cubes", "}CubeProperties"] },
+  { "name": "}CubeSecurity", "demensions": ["}Cubes", "}Groups"] },
+  {
+    "name": "}CubeSecurityProperties",
+    "demensions": ["}Cubes", "}CubeSecurityProperties"]
+  },
+  {
+    "name": "}DimensionProperties",
+    "demensions": ["}Dimensions", "}DimensionProperties"]
+  },
+  {
+    "name": "}ElementAttributes_indicator{approve",
+    "demensions": ["indicator{approve", "}ElementAttributes_indicator{approve"]
+  },
+  {
+    "name": "}ElementAttributes_indicator{auxiliary",
+    "demensions": [
+      "indicator{auxiliary",
+      "}ElementAttributes_indicator{auxiliary"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{cement_mills{cement",
+    "demensions": [
+      "indicator{cement_mills{cement",
+      "}ElementAttributes_indicator{cement_mills{cement"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{cement_mills{kpi",
+    "demensions": [
+      "indicator{cement_mills{kpi",
+      "}ElementAttributes_indicator{cement_mills{kpi"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{cement_mills{production",
+    "demensions": [
+      "indicator{cement_mills{production",
+      "}ElementAttributes_indicator{cement_mills{production"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{electricity",
+    "demensions": [
+      "indicator{electricity",
+      "}ElementAttributes_indicator{electricity"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{electricity{sse",
+    "demensions": [
+      "indicator{electricity{sse",
+      "}ElementAttributes_indicator{electricity{sse"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{fuel_cons{alternative",
+    "demensions": [
+      "indicator{fuel_cons{alternative",
+      "}ElementAttributes_indicator{fuel_cons{alternative"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{fuel_cons{kpi",
+    "demensions": [
+      "indicator{fuel_cons{kpi",
+      "}ElementAttributes_indicator{fuel_cons{kpi"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{fuel_cons{production",
+    "demensions": [
+      "indicator{fuel_cons{production",
+      "}ElementAttributes_indicator{fuel_cons{production"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{indicators{by_pr_by_m",
+    "demensions": [
+      "indicator{indicators{by_pr_by_m",
+      "}ElementAttributes_indicator{indicators{by_pr_by_m"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{indicators{simple",
+    "demensions": [
+      "indicator{indicators{simple",
+      "}ElementAttributes_indicator{indicators{simple"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{kiln",
+    "demensions": ["indicator{kiln", "}ElementAttributes_indicator{kiln"]
+  },
+  {
+    "name": "}ElementAttributes_indicator{mat_cons{cement",
+    "demensions": [
+      "indicator{mat_cons{cement",
+      "}ElementAttributes_indicator{mat_cons{cement"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{mat_cons{raw_meal",
+    "demensions": [
+      "indicator{mat_cons{raw_meal",
+      "}ElementAttributes_indicator{mat_cons{raw_meal"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{nai95",
+    "demensions": ["indicator{nai95", "}ElementAttributes_indicator{nai95"]
+  },
+  {
+    "name": "}ElementAttributes_indicator{quarry{kpi",
+    "demensions": [
+      "indicator{quarry{kpi",
+      "}ElementAttributes_indicator{quarry{kpi"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{quarry{production",
+    "demensions": [
+      "indicator{quarry{production",
+      "}ElementAttributes_indicator{quarry{production"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{raw_mill",
+    "demensions": [
+      "indicator{raw_mill",
+      "}ElementAttributes_indicator{raw_mill"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{recipes{cement",
+    "demensions": [
+      "indicator{recipes{cement",
+      "}ElementAttributes_indicator{recipes{cement"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{recipes{raw_meal",
+    "demensions": [
+      "indicator{recipes{raw_meal",
+      "}ElementAttributes_indicator{recipes{raw_meal"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_indicator{sales",
+    "demensions": ["indicator{sales", "}ElementAttributes_indicator{sales"]
+  },
+  {
+    "name": "}ElementAttributes_mill",
+    "demensions": ["mill", "}ElementAttributes_mill"]
+  },
+  {
+    "name": "}ElementAttributes_month",
+    "demensions": ["month", "}ElementAttributes_month"]
+  },
+  {
+    "name": "}ElementAttributes_product",
+    "demensions": ["product", "}ElementAttributes_product"]
+  },
+  {
+    "name": "}ElementAttributes_ship-to",
+    "demensions": ["ship-to", "}ElementAttributes_ship-to"]
+  },
+  {
+    "name": "}ElementAttributes_sold-to",
+    "demensions": ["sold-to", "}ElementAttributes_sold-to"]
+  },
+  {
+    "name": "}ElementAttributes_version",
+    "demensions": ["version", "}ElementAttributes_version"]
+  },
+  {
+    "name": "}ElementAttributes_year",
+    "demensions": ["year", "}ElementAttributes_year"]
+  },
+  {
+    "name": "}ElementAttributes_}Clients",
+    "demensions": ["}Clients", "}ElementAttributes_}Clients"]
+  },
+  {
+    "name": "}ElementAttributes_}Cultures",
+    "demensions": ["}Cultures", "}ElementAttributes_}Cultures"]
+  },
+  {
+    "name": "}ElementAttributes_}Groups",
+    "demensions": ["}Groups", "}ElementAttributes_}Groups"]
+  },
+  {
+    "name": "}ElementAttributes_Версия",
+    "demensions": ["Версия", "}ElementAttributes_Версия"]
+  },
+  {
+    "name": "}ElementAttributes_Год",
+    "demensions": ["Год", "}ElementAttributes_Год"]
+  },
+  {
+    "name": "}ElementAttributes_Месяц",
+    "demensions": ["Месяц", "}ElementAttributes_Месяц"]
+  },
+  {
+    "name": "}ElementAttributes_Показатели",
+    "demensions": ["Показатели", "}ElementAttributes_Показатели"]
+  },
+  {
+    "name": "}ElementAttributes_Показатели_Адм{Мэппинг_статей",
+    "demensions": [
+      "Показатели_Адм{Мэппинг_статей",
+      "}ElementAttributes_Показатели_Адм{Мэппинг_статей"
+    ]
+  },
+  {
+    "name": "}ElementAttributes_Статьи_Затрат",
+    "demensions": ["Статьи_Затрат", "}ElementAttributes_Статьи_Затрат"]
+  },
+  {
+    "name": "}ElementAttributes_Элементы_Затрат",
+    "demensions": ["Элементы_Затрат", "}ElementAttributes_Элементы_Затрат"]
+  },
+  {
+    "name": "}HierarchyProperties",
+    "demensions": ["}Dimensions", "}Hierarchies", "}HierarchyProperties"]
+  },
+  {
+    "name": "}StatsByChore",
+    "demensions": ["}TimeIntervals", "}Chores", "}StatsByProcess"]
+  },
+  {
+    "name": "}StatsByClient",
+    "demensions": ["}StatsStatsByClient", "}PerfClients", "}TimeIntervals"]
+  },
+  {
+    "name": "}StatsByCube",
+    "demensions": ["}StatsStatsByCube", "}PerfCubes", "}TimeIntervals"]
+  },
+  {
+    "name": "}StatsByCubeByClient",
+    "demensions": [
+      "}PerfClients",
+      "}PerfCubes",
+      "}Cube Functions",
+      "}StatsStatsByCubeByClient",
+      "}TimeIntervals"
+    ]
+  },
+  {
+    "name": "}StatsByProcess",
+    "demensions": ["}TimeIntervals", "}Processes", "}StatsByProcess"]
+  },
+  {
+    "name": "}StatsByRule",
+    "demensions": ["}Cubes", "}LineNumber", "}RuleStats"]
+  },
+  {
+    "name": "}StatsForServer",
+    "demensions": ["}StatsStatsForServer", "}TimeIntervals"]
+  }
+]

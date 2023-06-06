@@ -1,0 +1,13 @@
+.bytemd {
+    height: calc(100vh - 3rem) !important; /* 3 rem -- because of its a standart height of CDS header; !Important is only way to override this style... */
+    flex-grow: 1;
+    .bytemd-toolbar {
+        --vertical_padding: 7.5px;
+        padding-top: var(--vertical_padding);
+        padding-bottom: var(--vertical_padding);
+    }
+}
+
+.files_tree_container > .bx--label {
+    display: none !important;
+}

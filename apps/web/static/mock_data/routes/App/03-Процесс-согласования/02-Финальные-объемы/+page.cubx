@@ -1,0 +1,33 @@
+<script lang="ts">
+	import QueryGrid from '$lib/QueryGrid.svelte';
+</script>
+<QueryGrid
+    title='Sales cement'
+    description='Отчет по утвержденным объемам плана продаж'
+    syntax="mdx:tm1"
+    meta={{
+        rows: ['product'],
+        columns: ['month'],
+    }}
+    query={{
+        select: `
+            {TM1SubsetToSet([month].[month], 'dt')} ON COLUMNS,
+            {TM1SubsetToSet([product].[product], 'sales')} ON ROWS
+        `,
+        from: 'sales{cement',
+        where: {
+            version: ['dt', null],
+            year: ['dt', null],
+            'indicator{sales':['dt', null]
+        },
+        suppress_zero: {
+            rows: true,
+            columns: false,
+        },
+        options: {
+            suppress_zero: true,
+        },
+    }}
+    query_options={{        
+    }}
+/>

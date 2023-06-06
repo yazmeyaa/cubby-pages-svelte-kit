@@ -1,0 +1,31 @@
+{
+  "name": "@cubby/demo",
+  "meta": {
+    "name": "@cubby/demo",
+    "title": "Рабочее пространство 1"
+  },
+  "client-side": {
+    "layouts": [
+      {
+        "title": "Архитектор",
+        "name": "ide",
+        "component": "WorkbrenchLayout",
+        "welcome": "WorkbrenchLayoutWelcome"
+      },
+      {
+        "title": "Пользователь",
+        "name": "user",
+        "component": "UserLayout",
+        "welcome": "UserLayoutWelcome"
+      }
+    ],
+    "runtime": [
+      
+    ]
+  },
+  "server-side": {
+    "runtime": [],
+    "host": "80.90.186.90",
+    "port": "50122"
+  }
+}

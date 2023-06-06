@@ -1,0 +1,34 @@
+<script lang="ts">
+	import QueryGrid from '$lib/QueryGrid.svelte';
+</script>
+<QueryGrid
+    title='Таблица данных'
+    description='Компонент для ввода первичных данных обычными пользователями'
+    syntax="mdx:tm1"
+    meta={{
+        rows: ['product'],
+        columns: ['month'],
+    }}
+    query={{
+        select: `
+            {TM1SubsetToSet([month].[month], 'dt')} ON COLUMNS,
+            {TM1SubsetToSet([product].[product], 'sales')} ON ROWS
+        `,
+        from: 'sales{adjustment',
+        where: {
+            version: ['dt', null],
+            year: ['dt', null],
+            'indicator{sales':['dt', null]
+        },
+        suppress_zero: {
+            rows: false,
+            columns: false,
+        },
+        options: {
+            suppress_zero: true,
+        },
+    }}
+    query_options={{
+        
+    }}
+/>

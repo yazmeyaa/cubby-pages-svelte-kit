@@ -1,0 +1,119 @@
+<script lang="ts">
+    import copy from "clipboard-copy";
+    import { ContentSwitcher, Switch } from "carbon-components-svelte";
+    import { CodeSnippet, Modal, Search, ClickableTile, Grid, Row, Column, Content } from 'carbon-components-svelte';
+    import ChoreButton from '$lib/ChoreButton.svelte';
+    const code = `<ChoreButton\n  kind="secondary"\n  chore="example_name"\n  show_success_alert={true} options={{example: "value"}}>Вызвать</ChoreButton>`;
+    import Bullhorn from "carbon-icons-svelte/lib/Bullhorn.svelte";
+    import Analytics from "carbon-icons-svelte/lib/Analytics.svelte";
+    import { Tag } from "carbon-components-svelte";
+    import {
+      ProgressIndicator,
+      ProgressStep,
+      Button,
+    } from "carbon-components-svelte";
+
+  let currentIndex = 1;
+  let thirdStepCurrent = false;
+</script>
+
+# Интерфейс
+
+### Пример кнопок
+
+Если не указывать параметр chore у этой кнопки — то она станет обычной, и аттрибут on:click станет доступен для переопределения вами. До тех пор, пока кнопка привязана к вызову процедуры, назначить на клик свой обработчик не получится. И имейте ввиду — аттрибует options — это любое JSON-сериализуемое значение: словарь, хэш карта, список, строка или даже число.
+<br /><br /><br />
+<Row>
+  <Column>
+
+  <ChoreButton>Вызвать</ChoreButton> <ChoreButton kind="danger">Вызвать</ChoreButton><ChoreButton kind="secondary">Вызвать</ChoreButton> <ChoreButton kind="tertiary">Вызвать</ChoreButton><ChoreButton kind="ghost">Вызвать</ChoreButton> 
+  <br /><br />
+  всего доступно 5 стилей: danger, secondary, tertiary, ghost
+
+  <br /><br /><br />
+  </Column>
+  <Column>
+  <CodeSnippet
+    type="multi"
+    code={code}
+    copy={(text) => copy(text)}
+  />
+</Column>
+</Row>
+
+<br /><br /><br />
+
+
+
+<Row>
+  <Column>
+
+      ### Переключатель контента
+
+<ContentSwitcher selectedIndex={1}>
+  <Switch text="Latest news" />
+  <Switch text="Trending" />
+</ContentSwitcher>
+    </Column>
+    <Column>
+
+      ### ... можно и с иконками
+    
+<ContentSwitcher>
+  <Switch>
+    <div style="display: flex; align-items: center;">
+      <Bullhorn style="margin-right: 0.5rem;" /> Latest news
+    </div>
+  </Switch>
+  <Switch>
+    <div style="display: flex; align-items: center;">
+      <Analytics style="margin-right: 0.5rem;" /> Trending
+    </div>
+  </Switch>
+</ContentSwitcher>
+
+
+    </Column>
+</Row>
+<br /><br /><br />
+
+### Контроллер прогресса
+
+
+<ProgressIndicator bind:currentIndex>
+  <ProgressStep
+    complete
+    label="Step 1"
+    description="The progress indicator will listen for clicks on the steps"
+  />
+  <ProgressStep
+    complete
+    label="Step 2"
+    description="The progress indicator will listen for clicks on the steps"
+  />
+  <ProgressStep
+    complete
+    bind:current={thirdStepCurrent}
+    label="Step 3"
+    description="The progress indicator will listen for clicks on the steps"
+  />
+  <ProgressStep
+    label="Step 4"
+    description="The progress indicator will listen for clicks on the steps"
+  />
+</ProgressIndicator>
+
+<div style="margin: var(--cds-layout-02) 0">
+  <Button
+    kind={currentIndex === 2 ? "secondary" : "ghost"}
+    on:click={() => {
+      currentIndex = currentIndex === 2 ? 0 : 2;
+    }}
+  >
+    Переключить на 
+    {currentIndex === 2 ? 0 : 2} шаг
+  </Button>
+</div>
+
+<div>Текущий индекс: {currentIndex} Является ли текущий шаг третьим по счёту? {thirdStepCurrent}</div>
+

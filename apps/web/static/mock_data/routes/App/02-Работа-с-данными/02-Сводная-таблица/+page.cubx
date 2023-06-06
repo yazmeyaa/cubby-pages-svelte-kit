@@ -1,0 +1,12 @@
+<script lang="ts">
+	import QueryGrid from '$lib/QueryGrid.svelte';
+    import QueryBuilder from '$lib/QueryBuilder.svelte';
+</script>
+
+<QueryBuilder let:pass>
+    <!-- <code>{JSON.stringify(pass.query)}</code> -->
+    <QueryGrid
+        syntax="mdx:tm1"
+        {...pass}
+    />
+</QueryBuilder>

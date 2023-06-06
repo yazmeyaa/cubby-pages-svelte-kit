@@ -1,0 +1,117 @@
+<script lang="ts">
+    import {  Row, Column } from "carbon-components-svelte";
+	import QueryGrid from '$lib/QueryGrid.svelte';
+    import ChoreButton from '$lib/ChoreButton.svelte';
+    import { Dropdown, Tag } from "carbon-components-svelte";
+    import { writable } from "svelte/store";
+    import { AlluvialChart } from "@carbon/charts-svelte";
+  import el from "date-fns/locale/el";
+    let val1 = writable("");
+    let val2ф = writable("");
+    let chore_name = "Map{Items";
+
+    let colors = [
+         "#da1e28",
+         "#b28600",
+         "#198038",
+         "#ee538b",
+         "#08bdba",
+         "#1192e8",
+         "#a56eff",
+         "#009d9a",
+         "#fa4d56",
+         "#198038"
+    ]
+</script>
+
+<QueryGrid
+    title="Соответствие продуктов и материалов"
+    description=""
+    syntax="mdx:tm1"
+    meta={{
+        rows: [ 'Статьи_Затрат' ],
+        columns: [ 'Элементы_Затрат' ],
+    }}
+    query_options={{
+        suppress_zero: {
+            rows: null,
+            columns: true,
+        }
+    }}
+    query_options_default={{
+        suppress_zero: {
+            rows: false,
+            columns: false
+        }
+    }}
+    query={{
+        select: `{TM1SubsetToSet([Элементы_Затрат].[Элементы_Затрат], "dt")} ON COLUMNS,
+            {TM1SubsetToSet([Статьи_Затрат].[Статьи_Затрат], "dt")} ON ROWS 
+        `,
+        from: '00.02._Адм{Мэппинг_статей',
+        where: {
+            "Показатели_Адм{Мэппинг_статей": ['dt', null],
+        },
+        widgets: {
+            Сценарии: 'radio'
+        },
+        
+    }}
+    datasets={{default: 'x,y', spec: 'z'}}
+    let:data
+>
+
+{#if data?.spec }
+<AlluvialChart
+    data={data?.spec?.map((el, ii) => {
+        return data?.default?.map(ee => {
+            if (ee['element_' + (ii + 1)] !== '+') {
+                return null;
+            }
+            return {
+                "source": el,
+                "target": ee.group,
+                "value":1,
+            }
+        }).filter(e => e !== null)
+    }).flat()}
+    options={{
+	"alluvial": {
+		"nodes": [
+            ...(data?.spec?.map((el, ii) => {
+                return [{name: el, "category": 'соответствие', depth:1}]
+            }).flat() || []),
+            ...data?.default.map((ee, cc) => {
+                    return {
+                        "name":  ee.group,
+                        "category":'соответствие',
+                        "depth": 1,
+                    }
+                })
+			
+		]
+	},
+	"height": "600px",
+    "width": "100%",
+	"color": {
+		"scale": {
+            ...([0, ].map(e => {
+                // let acc = {};
+                let acc = data?.spec?.reduce((acc, curr) => {
+                    console.log(curr);
+                    acc[curr] = colors[Math.floor(Math.random() * colors.length)];
+                    return acc;
+                }, {});
+                console.log(acc);
+                return acc;
+            })[0]),
+			
+		},
+		"gradient": {
+			"enabled": true
+		}
+	}
+}}
+	/>{/if}
+</QueryGrid>
+<br />

@@ -1,0 +1,73 @@
+<script lang="ts">
+  import copy from "clipboard-copy";
+  import { CodeSnippet, Modal, Search, ClickableTile, Grid, Row, Column, Content } from 'carbon-components-svelte';
+	import ChoreButton from '$lib/ChoreButton.svelte';
+  import type { BuildIcons } from "@carbon/pictograms";
+  import buildInfo from "@carbon/pictograms/metadata.json";
+  import fuzzy from "fuzzy";
+
+  const pictograms: string[] = [];
+  const code = `<ChoreButton\n  kind="secondary"\n  chore="example_name"\n  show_success_alert={true} options={{example: "value"}}>Вызвать</ChoreButton>`;
+
+  (buildInfo as BuildIcons).icons.forEach(async ({output}) => {
+    pictograms.push(output[0]);
+  })
+  let ref = null;
+  let moduleName = null;
+  let value = "";
+  const { match } = fuzzy;
+
+  $: filteredModuleNames = pictograms.filter((name) => match(value, name.moduleName));
+  $: code2 = `<script>\n  import ${moduleName} from "@cubby/pictos/lib/${moduleName}";\n<\/script>\n\n<${moduleName} />`;
+</script>
+
+# Адаптивные векторные пиктограммы
+
+#### 961 шт без учёта вариаций по цветовым темам
+
+<Modal
+  passiveModal
+  open={moduleName != null}
+  modalHeading={moduleName}
+  on:transitionend={({ detail }) => {
+    if (!detail.open) moduleName = null;
+  }}
+>
+  <div class:pictogram-preview={true}>
+  </div>
+  <CodeSnippet light type="multi" code={code2} />
+</Modal>
+
+
+
+          <Search
+            style="border-left: 1px solid var(--cds-ui-03);"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            titleText="Search"
+            labelText="Search"
+            placeholder={`Искать в пиктограммах на английском (например "Airplane")`}
+            bind:ref
+            bind:value
+          />
+  
+    <Row noGutter style="padding-left:16px;padding-right:16px;">
+    {#each filteredModuleNames as pictogram}
+      <Column>
+        <ClickableTile
+          style="padding:35px;"
+          title={pictogram.name}
+          on:click={() => (moduleName = pictogram.moduleName)}
+        >
+
+          <svg  {...pictogram.descriptor.attrs} >
+            <path {...pictogram.descriptor.content[0].attrs} />
+          </svg>
+
+          
+        </ClickableTile>
+     </Column>
+    {/each}
+ </Row>
