@@ -14,7 +14,7 @@
   import { pb } from '$lib/pocketbase'
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
-  import { setAuth } from '$lib/stores/admin'
+  import { auth, setAuth } from '$lib/stores/admin'
 
   export let data: PageData
 
@@ -24,7 +24,7 @@
   let formRef: HTMLFormElement
 
   onMount(() => {
-    if(pb.authStore.isValid) goto('/spreadsheets')
+    if($auth && $auth.isValid) goto('/spreadsheets')
   })
 
   async function handleSubmit() {

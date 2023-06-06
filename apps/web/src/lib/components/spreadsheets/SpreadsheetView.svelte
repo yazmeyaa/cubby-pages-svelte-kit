@@ -42,7 +42,7 @@
   import { CELL_KINDS } from '$lib/types/spreadsheet'
   import FormulaParser from 'fast-formula-parser'
   import type { Record } from 'pocketbase'
-  import { addSuccessToast, toasts } from '$lib/stores/toasts'
+  import { addErrorToast, addSuccessToast, toasts } from '$lib/stores/toasts'
 
   let data: any
   export let spreadsheetRecord: Record
@@ -74,6 +74,9 @@
     )
     .then(() => {
       addSuccessToast("Successfull saved table!", 3000)
+    })
+    .catch(() => {
+      addErrorToast("Something went wrong while process your request")
     })
   }
 

@@ -10,7 +10,7 @@
 
     import { tables_collection } from "$lib/stores/tables";
     import { collections } from "$lib/stores/collections";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
 
     import { _ } from "svelte-i18n";
 

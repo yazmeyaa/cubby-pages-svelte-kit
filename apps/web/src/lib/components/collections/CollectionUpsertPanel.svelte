@@ -3,7 +3,7 @@
     import { scale } from "svelte/transition";
     import { Collection } from "pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import { errors, setErrors, removeError } from "$lib/stores/errors";
     import { confirm } from "$lib/stores/confirmation";
     import { removeAllToasts, addSuccessToast } from "$lib/stores/toasts";

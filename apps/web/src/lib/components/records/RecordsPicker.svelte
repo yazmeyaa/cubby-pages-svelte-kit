@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import CommonHelper from "$lib/utils/CommonHelper";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import scrollend from "$lib/actions/scrollend";
     import tooltip from "$lib/actions/tooltip";
     import OverlayPanel from "$lib/components/base/OverlayPanel.svelte";

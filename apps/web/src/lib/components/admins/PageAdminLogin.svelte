@@ -1,7 +1,7 @@
 <script>
     import { link, replace, querystring } from "svelte-spa-router";
     import FullPage from "$lib/components/base/FullPage.svelte";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import Field from "$lib/components/base/Field.svelte";
     import { addErrorToast, removeAllToasts } from "$lib/stores/toasts";
     import CommonHelper from "$lib/utils/CommonHelper";

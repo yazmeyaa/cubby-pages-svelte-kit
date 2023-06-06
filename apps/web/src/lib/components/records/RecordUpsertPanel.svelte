@@ -2,7 +2,7 @@
     import { createEventDispatcher, tick } from "svelte";
     import { Record } from "pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import tooltip from "$lib/actions/tooltip";
     import { setErrors } from "$lib/stores/errors";
     import { confirm } from "$lib/stores/confirmation";

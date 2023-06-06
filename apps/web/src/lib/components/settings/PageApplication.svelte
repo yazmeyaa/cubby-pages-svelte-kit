@@ -1,5 +1,5 @@
 <script>
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { pageTitle, appName, hideControls } from "$lib/stores/app";
     import { addSuccessToast } from "$lib/stores/toasts";

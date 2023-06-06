@@ -5,7 +5,7 @@
     import { activeTable } from "$lib/stores/tables";
     import { loadCollections } from "$lib/stores/collections";
     // import "$lib/components/pivot_trial/codebase/pivot";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import { onMount, onDestroy } from "svelte";
 
     import CodeEditor from "../base/CodeEditor.svelte";

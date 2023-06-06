@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { fly } from "svelte/transition";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import tooltip from "$lib/actions/tooltip";
     import { confirm } from "$lib/stores/confirmation";

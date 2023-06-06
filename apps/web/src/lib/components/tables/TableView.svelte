@@ -1,5 +1,5 @@
 <script>
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import { onMount } from "svelte";
 
     export let tableRecord;

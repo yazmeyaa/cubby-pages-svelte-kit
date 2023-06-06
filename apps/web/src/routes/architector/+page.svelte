@@ -18,7 +18,6 @@
 
   export let data: PageData
 
-  console.log(data)
   let treeViewData = data.treeViewData
 
   let children = [...treeViewData]

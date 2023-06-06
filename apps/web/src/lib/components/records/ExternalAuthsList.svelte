@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { confirm } from "$lib/stores/confirmation";
     import { addSuccessToast } from "$lib/stores/toasts";

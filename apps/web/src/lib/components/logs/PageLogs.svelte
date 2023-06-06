@@ -12,6 +12,7 @@
     import { Breadcrumb, BreadcrumbItem, Button, Toggle } from "carbon-components-svelte";
 
     import Reset from 'carbon-icons-svelte/lib/Reset.svelte'
+  import { browser } from "$app/environment"
 
     const ADMIN_LOGS_LOCAL_STORAGE_KEY = "includeAdminLogs";
 
@@ -19,13 +20,13 @@
 
     let logPanel;
     let filter = "";
-    let includeAdminLogs = window.localStorage?.getItem(ADMIN_LOGS_LOCAL_STORAGE_KEY) << 0;
+    let includeAdminLogs = browser &&  window.localStorage?.getItem(ADMIN_LOGS_LOCAL_STORAGE_KEY) << 0;
     let refreshToken = 1;
 
     $: presets = !includeAdminLogs ? 'auth!="admin"' : "";
 
-    $: if (typeof includeAdminLogs !== "undefined" && window.localStorage) {
-        window.localStorage.setItem(ADMIN_LOGS_LOCAL_STORAGE_KEY, includeAdminLogs << 0);
+    $: if (browser && (typeof includeAdminLogs !== "undefined" && window.localStorage) ) {
+        browser && window.localStorage.setItem(ADMIN_LOGS_LOCAL_STORAGE_KEY, includeAdminLogs << 0);
     }
 
     function refresh() {

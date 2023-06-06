@@ -1,6 +1,6 @@
 <script>
     import PocketBase, { getTokenPayload } from "pocketbase";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import FullPage from "$lib/components/base/FullPage.svelte";
     import Field from "$lib/components/base/Field.svelte";

@@ -1,5 +1,5 @@
 <script>
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { pageTitle } from "$lib/stores/app";
     import { setErrors } from "$lib/stores/errors";

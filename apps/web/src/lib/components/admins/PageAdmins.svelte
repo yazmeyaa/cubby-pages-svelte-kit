@@ -1,6 +1,5 @@
 <script>
-    import { replace, querystring } from "svelte-spa-router";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { pageTitle } from "$lib/stores/app";
     import { admin as loggedAdmin } from "$lib/stores/admin";
@@ -27,21 +26,24 @@
     import Reset from "carbon-icons-svelte/lib/Reset.svelte";
 
     import { _ } from "svelte-i18n";
+  import { goto } from "$app/navigation"
 
     $pageTitle = "Admins";
 
-    const queryParams = new URLSearchParams($querystring);
+    // const queryParams = new URLSearchParams($querystring);
 
     let adminUpsertPanel;
     let admins = [];
     let isLoading = false;
-    let filter = queryParams.get("filter") || "";
-    let sort = queryParams.get("sort") || "-created";
+    // let filter = queryParams.get("filter") || "";
+    let filter =  "";
+    let sort = "-created";
+    // let sort = queryParams.get("sort") || "-created";
 
     $: if (sort !== -1 && filter !== -1) {
         // keep listing params in sync
         const query = new URLSearchParams({ filter, sort }).toString();
-        replace("/settings/admins?" + query);
+        goto("/settings/admins?" + query);
 
         loadAdmins();
     }

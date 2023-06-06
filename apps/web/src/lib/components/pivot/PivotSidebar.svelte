@@ -8,7 +8,7 @@
         loadCollections,
     } from "$lib/stores/collections";
     import { onMount } from "svelte";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import { activePivot } from "$lib/stores/pivots";
     import RecordUpsertPanel from "../records/RecordUpsertPanel.svelte";
 

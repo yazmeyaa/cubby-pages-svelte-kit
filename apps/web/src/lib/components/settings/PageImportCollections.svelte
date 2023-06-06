@@ -1,6 +1,6 @@
 <script>
     import { tick } from "svelte";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { pageTitle } from "$lib/stores/app";
     import { addErrorToast } from "$lib/stores/toasts";

@@ -1,5 +1,5 @@
 <script>
-    import { link } from "svelte-spa-router";
+    // import { link } from "svelte-spa-router";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { hideControls } from "$lib/stores/app";
     import { collections, activeCollection, isCollectionsLoading } from "$lib/stores/collections";
@@ -68,8 +68,8 @@
                     href="/collections?collectionId={collection.id}"
                     class="sidebar-list-item"
                     class:active={$activeCollection?.id === collection.id}
-                    use:link
-                >
+                    >
+                    <!-- use:link -->
                 <svelte:component this={icon}/>
                     <span class="txt">{collection.name}</span>
                 </a>

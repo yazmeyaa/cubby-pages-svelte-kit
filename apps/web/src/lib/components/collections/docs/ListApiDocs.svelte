@@ -1,6 +1,6 @@
 <script>
     import { Collection } from "pocketbase";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import CodeBlock from "$lib/components/base/CodeBlock.svelte";
     import FilterSyntax from "$lib/components/collections/docs/FilterSyntax.svelte";

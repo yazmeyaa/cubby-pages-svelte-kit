@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import SortHeader from "$lib/components/base/SortHeader.svelte";
     import FormattedDate from "$lib/components/base/FormattedDate.svelte";

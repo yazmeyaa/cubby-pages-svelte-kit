@@ -1,7 +1,7 @@
 <script>
     import { tick } from "svelte";
     import { replace } from "svelte-spa-router";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import FullPage from "$lib/components/base/FullPage.svelte";
     import Installer from "$lib/components/base/Installer.svelte";
 

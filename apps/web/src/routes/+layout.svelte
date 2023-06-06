@@ -17,7 +17,7 @@
   import NavLink from '$lib/components/layout/NavLink.svelte'
   import Toasts from '$lib/components/base/Toasts.svelte'
   import { onMount } from 'svelte'
-  import {user} from '$lib/stores/user'
+  import { user } from '$lib/stores/user'
 
   import type { PageData } from './$types'
 
@@ -37,13 +37,11 @@
     theme = event.detail.theme
   }
 
-  $: showAppSidebar = $auth?.isValid ?? true
+  $: showAppSidebar = $auth?.isValid ?? false
   $: console.log($auth, pb)
 
   onMount(() => {
-
-
-    if(!data.auth) goto('/login')
+    if (!$auth?.isValid) goto('/login')
   })
 
   import '$lib/scss/main.scss'

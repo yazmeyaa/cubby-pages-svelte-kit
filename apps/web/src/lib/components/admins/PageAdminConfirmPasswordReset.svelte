@@ -1,6 +1,6 @@
 <script>
     import { link, replace } from "svelte-spa-router";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
     import { addSuccessToast } from "$lib/stores/toasts";
     import FullPage from "$lib/components/base/FullPage.svelte";

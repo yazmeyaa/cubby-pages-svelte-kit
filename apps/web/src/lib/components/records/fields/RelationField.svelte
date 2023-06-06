@@ -1,7 +1,7 @@
 <script>
     import { SchemaField } from "pocketbase";
     import CommonHelper from "$lib/utils/CommonHelper";
-    import ApiClient from "$lib/utils/ApiClient";
+    import {pb as ApiClient} from "$lib/pocketbase";
     import tooltip from "$lib/actions/tooltip";
     import Field from "$lib/components/base/Field.svelte";
     import RecordsPicker from "$lib/components/records/RecordsPicker.svelte";
