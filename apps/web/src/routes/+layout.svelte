@@ -22,9 +22,11 @@
   import type { PageData } from './$types'
 
   export let data: PageData
+  
+
 
   let theme: CarbonTheme = 'white'
-  let showAppSidebar = true
+  let showAppSidebar = data.auth
   let isSideNavOpen = false
   let isInFrame = false
   let initPromise = false
@@ -37,11 +39,14 @@
     theme = event.detail.theme
   }
 
-  $: showAppSidebar = $auth?.isValid ?? false
-  $: console.log($auth, pb)
 
   onMount(() => {
-    if (!$auth?.isValid) goto('/login')
+    auth.subscribe(value => {
+      showAppSidebar = value && value.isValid ? true : false
+    })
+    showAppSidebar = data.auth
+    console.log(data)
+    if (!data.auth) goto('/login')
   })
 
   import '$lib/scss/main.scss'

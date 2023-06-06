@@ -14,7 +14,7 @@
 
         const realQueryParams = new URLSearchParams(window.location.search);
         if (realQueryParams.has(import.meta.env.PB_INSTALLER_PARAM)) {
-            ApiClient.logout(false);
+            ApiClient.logout();
             showInstaller = true;
             return;
         }

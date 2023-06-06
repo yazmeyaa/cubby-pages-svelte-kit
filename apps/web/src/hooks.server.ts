@@ -8,6 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     try {
       await pb.admins.authRefresh()
     } catch (_) {
+      console.log('Auth error?')
       pb.authStore.clear()
     }
   }
