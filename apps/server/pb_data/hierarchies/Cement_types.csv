@@ -1,0 +1,6 @@
+id,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,All Cement types,,,1,True,False,1,False,,
+2,1,CEM I 42.5 R,,All Cement types,2,False,True,1,False,,
+3,1,CEM II/A-K 42.5 N,,All Cement types,2,False,True,1,False,,
+4,1,CEM II/A-L 42.5 N,,All Cement types,2,False,True,1,False,,
+5,1,500 D0 N,,All Cement types,2,False,True,1,False,,

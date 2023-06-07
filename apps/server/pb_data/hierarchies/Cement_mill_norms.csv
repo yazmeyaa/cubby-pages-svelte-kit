@@ -1,0 +1,6 @@
+id,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,All Cement mill norms,,,1,True,False,1,False,,
+2,1,Grinding air consumption,[kg/t],All Cement mill norms,2,False,False,1,False,,
+3,2,Poliplast,[kg/t],Grinding air consumption,3,False,True,1,False,,
+4,2,Grace,[kg/t],Grinding air consumption,3,False,True,1,False,,
+5,1,Grinding media consumption,[t/t cem],All Cement mill norms,2,False,True,1,False,,

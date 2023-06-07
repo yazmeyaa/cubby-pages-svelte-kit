@@ -1,0 +1,8 @@
+id,parent_id,name,Unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,ALL Versions,,,1,True,False,1,False,,
+2,1,Current/FC,,ALL Versions,2,False,True,1,False,,
+3,1,Prev FC,,ALL Versions,2,False,True,1,False,,
+4,1,Budget,,ALL Versions,2,False,True,1,False,,
+5,1,Bottom-up,,ALL Versions,2,False,True,1,False,,
+6,1,Adj 1,,ALL Versions,2,False,True,1,False,,
+7,1,Final volume,,ALL Versions,2,False,True,1,False,,

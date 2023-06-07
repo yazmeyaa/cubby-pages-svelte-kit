@@ -1,0 +1,4 @@
+id,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,All Cement Mills,,,1,True,False,1,False,,
+2,1,Cement mill #1,,All Cement Mills,2,False,True,1,False,,
+3,1,Cement mill #2,,All Cement Mills,2,False,True,1,False,,

@@ -1,0 +1,9 @@
+v,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,Total,[%],,1,True,False,1,False,,
+2,1,Limestone,[%],Total,2,False,False,1,False,,
+3,2,Phosphogypsum,[%],Limestone,3,False,False,1,False,,
+4,3,Pyrite,[%],Phosphogypsum,4,False,False,1,False,,
+5,4,Sand,[%],Pyrite,5,False,False,1,False,,
+6,5,Pyrite in Clay Mix,[%],Sand,6,False,False,1,False,,
+7,6,Natural Gypsum,[%],Pyrite in Clay Mix,7,False,False,1,False,,
+8,7,Clay Mix,[%],Natural Gypsum,8,False,True,1,False,,

@@ -1,0 +1,4 @@
+v,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,Holcim RUS CM Ltd,,,1,True,False,1,False,,
+2,1,Ferzikovo plant (LC),,Holcim RUS CM Ltd,2,False,True,1,False,,
+3,1,CLC Terminal Russkiy Stroitel,,Holcim RUS CM Ltd,2,False,True,1,False,,

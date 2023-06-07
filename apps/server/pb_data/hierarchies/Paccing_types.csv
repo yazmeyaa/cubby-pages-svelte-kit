@@ -1,0 +1,7 @@
+id,parent_id,name,unit,parent_name,level_number,is_root,is_leaf,weight,is_calculated,natural_key,level_name
+1,0,Total,,,1,True,False,1,False,,
+2,1,Total bulks,[t],Total,2,False,False,1,False,,
+3,2,bulk,[t],Total bulks,3,False,True,1,False,,
+4,1,Total bags,[t],Total,2,False,True,1,False,,
+5,2,bag 50 kg,[t],Total bulks,3,False,True,1,False,,
+6,2,bag 25 kg,[t],Total bulks,3,False,True,1,False,,
